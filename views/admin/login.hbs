@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>{{title}}</title>
+    <link href="/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/style-responsive.css" rel="stylesheet">
+</head>
+<body>
+    <div id="login-page">
+        <div class="container">
+            <form class="form-login" action="/admin/login" method="POST">
+                <input type="hidden" class="csrf" name="_csrf" value="{{csrf}}">
+                <h2 class="form-login-heading">Admin panel</h2>
+                <div class="login-wrap">
+                    <input type="text" name="login" class="form-control" placeholder="Օգտատեր" autofocus>
+                    <br>
+                    <input type="password" name="password" class="form-control" placeholder="Գաղտնաբառ">
+                    <label class="checkbox" style="margin-left: 20px;">
+                        <!--<input type="checkbox" value="remember-me"> Հիշել-->
+                    </label>
+                    <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> Մուտք</button>
+                    <hr>
+                </div>
+            </form>
+        </div>
+    </div>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/jquery.backstretch.min.js"></script>
+<script>
+    $.backstretch("/images/background.jpg", {
+        speed: 500
+    });
+</script>
+</body>
+
+</html>

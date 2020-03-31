@@ -1,0 +1,63 @@
+<div class="row">
+    <aside>
+        <nav class="navbar navbar-expand-lg navbar-dark ">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    {{#if isHome}}
+                        <li class="nav-item active">
+                            <a href="/" class="nav-link">Գլխավոր էջ</a>
+                        </li>
+                    {{else}}
+                        <li class="nav-item">
+                            <a href="/" class="nav-link">Գլխավոր էջ</a>
+                        </li>
+                    {{/if}}
+
+                    {{#if isService}}
+                        <li class="nav-item active">
+                            <a href="/services" class="nav-link">Ծառայություններ</a>
+                        </li>
+                    {{else}}
+                        <li class="nav-item">
+                            <a href="/services" class="nav-link">Ծառայություններ</a>
+                        </li>
+                    {{/if}}
+
+                    {{#if isEmployee}}
+                        <li class="nav-item active">
+                            <a href="/employees" class="nav-link">Մեր աշխատակիցները</a>
+                        </li>
+                    {{else}}
+                        <li class="nav-item">
+                            <a href="/employees" class="nav-link">Մեր աշխատակիցները</a>
+                        </li>
+                    {{/if}}
+
+                    {{#if isAbout}}
+                        <li class="nav-item active">
+                            <a href="/about" class="nav-link">Մեր մասին</a>
+                        </li>
+                    {{else}}
+                        <li class="nav-item">
+                            <a href="/about" class="nav-link">Մեր մասին</a>
+                        </li>
+                    {{/if}}
+
+                    {{#if isReg}}
+                        <li class="nav-item active">
+                            <a href="/register" class="nav-link">Հերթագրվել</a>
+                        </li>
+                    {{else}}
+                        <li class="nav-item">
+                            <a href="/register" class="nav-link">Հերթագրվել</a>
+                        </li>
+                    {{/if}}
+                </ul>
+            </div>
+        </nav>
+    </aside>
+</div>

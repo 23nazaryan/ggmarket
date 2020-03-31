@@ -1,0 +1,31 @@
+<section class="wrapper">
+    <h3><i class="fa fa-angle-right"></i> {{title}}</h3>
+    <div class="row mt">
+        <div class="col-lg-12">
+            <div class="form-panel">
+                <div class="form">
+                    <form class="cmxform form-horizontal style-form" method="POST" action="{{action}}">
+                        <input type="hidden" class="csrf" name="_csrf" value="{{csrf}}">
+                        <div class="form-group">
+                            <label for="tel" class="control-label col-lg-2">Հեռ։</label>
+                            <div class="col-lg-10">
+                                <input class="form-control" id="tel" name="tel" type="text" value="{{blacklist.tel}}" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="control-label col-lg-2">Էլ․ հասցե</label>
+                            <div class="col-lg-10">
+                                <input class="form-control" id="email" name="email" type="email" value="{{blacklist.email}}" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-5">
+                                <button type="submit" class="btn btn-success">Պահպանել</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

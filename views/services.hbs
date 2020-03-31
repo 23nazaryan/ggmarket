@@ -1,0 +1,19 @@
+<article class="shadow-lg services">
+    <div class="heading-title">
+        <h1>Ծառայություններ</h1>
+    </div>
+    <div class="row">
+        {{#if services.length}}
+            {{#each services}}
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="services text-center">
+                        <a href="/services/{{_id}}">
+                            <img src="/images/services/{{_id}}.jpg" alt="" class="services-img shadow-lg">
+                        </a>
+                        <p>{{title}}</p>
+                    </div>
+                </div>
+            {{/each}}
+        {{/if}}
+    </div>
+</article>

@@ -1,0 +1,69 @@
+<aside>
+    <div id="sidebar" class="nav-collapse ">
+        <ul class="sidebar-menu" id="nav-accordion">
+            {{#if isClients}}
+                <li>
+                    <a href="/admin" class="active">
+                        <i class="fa fa-address-book"></i>
+                        <span>Հաճախորդներ </span>
+                    </a>
+                </li>
+            {{else}}
+                <li>
+                    <a href="/admin">
+                        <i class="fa fa-address-book"></i>
+                        <span>Հաճախորդներ </span>
+                    </a>
+                </li>
+            {{/if}}
+
+            {{#if isServices}}
+                <li>
+                    <a href="/admin/services" class="active">
+                        <i class="fa fa-medkit"></i>
+                        <span>Ծառայություններ </span>
+                    </a>
+                </li>
+            {{else}}
+                <li>
+                    <a href="/admin/services">
+                        <i class="fa fa-medkit"></i>
+                        <span>Ծառայություններ </span>
+                    </a>
+                </li>
+            {{/if}}
+
+            {{#if isEmployees}}
+                <li>
+                    <a href="/admin/employees" class="active">
+                        <i class="fa fa-user-md"></i>
+                        <span>Աշխատակիցներ </span>
+                    </a>
+                </li>
+            {{else}}
+                <li>
+                    <a href="/admin/employees">
+                        <i class="fa fa-user-md"></i>
+                        <span>Աշխատակիցներ </span>
+                    </a>
+                </li>
+            {{/if}}
+
+            {{#if isBlacklist}}
+                <li>
+                    <a href="/admin/blacklist" class="active">
+                        <i class="fa fa-user-times"></i>
+                        <span>Սև ցուցակ </span>
+                    </a>
+                </li>
+            {{else}}
+                <li>
+                    <a href="/admin/blacklist">
+                        <i class="fa fa-user-times"></i>
+                        <span>Սև ցուցակ </span>
+                    </a>
+                </li>
+            {{/if}}
+        </ul>
+    </div>
+</aside>

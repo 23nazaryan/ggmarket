@@ -1,0 +1,42 @@
+<article>
+    <div class="heading-title">
+        {{#if success}}
+            <h2 style="color: green;">{{success}}</h2>
+            <img src="/images/checked.png" alt="" width="100">
+            <script>
+                window.setTimeout("document.location = '../'", 5000);
+            </script>
+    </div>
+</article>
+        {{else}}
+            {{#if error}}
+                <h2 style="color: red;">{{error}}</h2>
+                <img src="/images/danger.png" alt="" width="100">
+            {{/if}}
+
+            <h2>Մուտքագրեք հաստատման կոդը</h2>
+    </div>
+            <div class="col-lg-6 offset-md-3">
+                <form action="/register/verification" method="post">
+                    <input type="hidden" name="_csrf" value="{{csrf}}">
+                    <input type="hidden" name="id" value="{{client._id}}">
+
+                    <div class="form-group">
+                        <p>
+                            <small>
+                                <b style="color: red;">* </b>
+                                Այս դաշտում հարկավոր է մուտքագրել նամակի միջի հաստատման կոդը
+                            </small>
+                        </p>
+
+                        <input type="text" id="clients-key" class="form-control" name="key" value="" aria-invalid="false">
+                    </div>
+
+
+                    <button type="submit" class="btn btn-success">Հաստատել</button>
+                </form>
+            </div>
+</article>
+        {{/if}}
+
+
