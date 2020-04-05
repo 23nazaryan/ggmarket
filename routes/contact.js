@@ -46,15 +46,10 @@ router.post('/', contactValidators, async (req, res) => {
         if (!errors.isEmpty()) {
             error = errors.array()[0].msg
         } else {
-            const send = await transporter.sendMail(contactEmail(email, message))
+            await transporter.sendMail(contactEmail(email, message))
+            req.flash('success', 'Շնորհակալություն մեր հետ կապնվելու համար։ Շուտով մենք կպատասխանենք Ձեզ։')
 
-            if (send.response.includes('OK')) {
-                req.flash('success', 'Շնորհակալություն մեր հետ կապնվելու համար։ Շուտով մենք կպատասխանենք Ձեզ։')
-
-                return res.status(200).redirect('/contact')
-            } else {
-                error = 'Ձեր կողմից մուտքագրված էլ․ փոստը չի գործում'
-            }
+            return res.status(200).redirect('/contact')
         }
 
         req.flash('error', error)
