@@ -738,7 +738,7 @@ ul.dropdown-menu.drp-mnu li a i {
 
 #PPMiniCart {
     left: 44% !important;
-	z-index: 2;
+    z-index: 2;
 }
 
 .minicart-showing #PPMiniCart form {
@@ -2025,11 +2025,60 @@ h2.typoh2 {
 }
 
 .hover14 figure img {
-	width: 200px;
+    width: 200px;
 }
 
-.hover14 .tag{
-	z-index: 1;
+.hover14 .tag {
+    z-index: 1;
+}
+
+/*New aside*/
+
+.navbar-collapse .panel-default {
+    border-radius: 15px;
+    margin: 5px;
+}
+
+.navbar-collapse .panel-default h4 {
+    font-weight: bold;
+}
+
+.navbar-collapse a .panel-heading {
+    border-radius: 15px;
+    background-color: #84c639
+}
+
+.navbar-collapse a .panel-heading:hover {
+    background-color: #84c639 !important;
+    transition: .4s ease-in;
+    -webkit-transition: .4s ease-in;
+    color: #FFFFFF;
+}
+
+.navbar-collapse a {
+    text-decoration: none;
+    color: #FFFFFF;
+    width: 100%;
+    height: 100%;
+}
+
+.navbar-collapse ul a li {
+    list-style-type: none;
+    background-color: #84c639;
+    border-radius: 23px;
+    padding: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.navbar-collapse ul a li {
+    color: #FFFFFF;
+}
+
+.navbar-collapse ul a li:hover {
+    color: red;
+    transition: .4s ease-in;
+    -webkit-transition: .4s ease-in;
 }
 
 @media (max-width: 768px) {
