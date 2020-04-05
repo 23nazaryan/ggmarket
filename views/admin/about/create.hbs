@@ -1,0 +1,134 @@
+<section class="wrapper">
+    <h3><i class="fa fa-angle-right"></i> {{title}}</h3>
+    <div class="row mt">
+        <div class="col-lg-12">
+            <div class="form-panel">
+                <div class="form">
+                    <form class="cmxform form-horizontal style-form" method="POST" action="{{action}}" enctype="multipart/form-data">
+                        <input type="hidden" class="csrf" name="_csrf" value="{{csrf}}">
+                        <div class="col-12" style="padding: 23px;border: gray 1px solid;margin-bottom: 23px;">
+                            <h2 style="margin-bottom: 23px;">Մեր մասին</h2>
+
+                            <div class="form-group">
+                                <label for="text" class="control-label col-lg-2">Նկարագրություն</label>
+                                <div class="col-lg-8">
+                                    <textarea class="form-control" id="text" rows="10" name="text">{{about.text}}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="features" class="control-label col-lg-2">Յուրահատկություններ</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="features" name="features" value="{{features}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="img" class="control-label col-lg-2">Նկար</label>
+                                <div class="col-lg-5">
+                                    <input class="form-control" id="img" name="img" type="file" />
+                                </div>
+                            </div>
+
+                            <div class="col-5" style="margin: 50px">
+                                {{#if about.img}}
+                                    <img id="image_upload_preview" src="/images/about/{{about.img}}" style="width: 200px; margin-bottom: 15px" />
+                                {{else}}
+                                    <img id="image_upload_preview" style="width: 200px; margin-bottom: 15px" />
+                                {{/if}}
+                            </div>
+                        </div>
+
+                        <div class="col-12" style="padding: 23px;border: gray 1px solid;margin-bottom: 23px;">
+                            <h2 style="margin-bottom: 23px;">Հետադարձ կապ</h2>
+
+                            <div class="form-group">
+                                <label for="address" class="control-label col-lg-2">Հասցե</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="address" name="address" value="{{about.address}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="control-label col-lg-2">Էլ․ Հասցե</label>
+                                <div class="col-lg-8">
+                                    <input type="email" class="form-control" id="email" name="email" value="{{about.email}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tel" class="control-label col-lg-2">Հեռ։</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="tel" name="tel" value="{{about.tel}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="work_hours" class="control-label col-lg-2">Աշխ․ ժամեր</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="work_hours" name="work_hours" value="{{about.work_hours}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="map_url" class="control-label col-lg-2">Քարտեզ</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="map_url" name="map_url" value="{{about.map_url}}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12" style="padding: 23px;border: gray 1px solid;margin-bottom: 23px;">
+                            <h2 style="margin-bottom: 23px;">Պատվիրում, առաքում և վճարում</h2>
+
+                            <div class="form-group">
+                                <label for="buying" class="control-label col-lg-2">Ինչպե՞ս պատվիրել</label>
+                                <div class="col-lg-8">
+                                    <textarea class="form-control" id="buying" rows="10" name="buying">{{about.buying}}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="delivery" class="control-label col-lg-2">Առաքում</label>
+                                <div class="col-lg-8">
+                                    <textarea class="form-control" id="delivery" rows="10" name="delivery">{{about.delivery}}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="payment" class="control-label col-lg-2">Վճարում</label>
+                                <div class="col-lg-8">
+                                    <textarea class="form-control" id="payment" rows="10" name="payment">{{about.payment}}</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12" style="padding: 23px;border: gray 1px solid;margin-bottom: 23px;">
+                            <h2 style="margin-bottom: 23px;">Սոց․ կայքերի հասցեներ</h2>
+
+                            <div class="form-group">
+                                <label for="facebook_link" class="control-label col-lg-2">Facebook</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="facebook_link" name="facebook_link" value="{{about.facebook_link}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="instagram_link" class="control-label col-lg-2">Instagram</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="instagram_link" name="instagram_link" value="{{about.instagram_link}}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-5">
+                                <button type="submit" class="btn btn-success">Պահպանել</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

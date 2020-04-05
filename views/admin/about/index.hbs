@@ -1,0 +1,35 @@
+<section class="wrapper">
+    <div class="row mt">
+        <div class="col-md-12">
+            <div class="content-panel">
+                <table class="table table-striped table-advance table-hover">
+                    <h4><i class="fa fa-angle-right"></i> {{title}}</h4>
+                    {{#unless about}}
+                        <a class="btn btn-success" style="margin-left: 20px;" href="/admin/about/create">Ավելացնել</a>
+                    {{/unless}}
+                    <hr>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#if about.length}}
+                        {{#each about}}
+                            <tr>
+                                <td>Ընդհանուր տեղեկություններ</td>
+
+                                <td>
+                                    <a href="/admin/about/edit/{{_id}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                    <a href="/admin/about/delete/{{_id}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+                                </td>
+                            </tr>
+                        {{/each}}
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

@@ -7,13 +7,17 @@ const csrf = require('csurf')
 const flash = require('connect-flash')
 const session = require('express-session')
 const helmet = require('helmet')
+const compression = require('compression')
 const MongoStore = require('connect-mongodb-session')(session)
 const path = require('path')
 const homeRoutes = require('./routes/home')
-const servicesRoutes = require('./routes/services')
-const employeesRoutes = require('./routes/employees')
+const productRoutes = require('./routes/product')
+const productsRoutes = require('./routes/products')
+const salesRoutes = require('./routes/sales')
+const searchRoutes = require('./routes/search')
 const aboutRoutes = require('./routes/about')
-const registerRoutes = require('./routes/register')
+const contactRoutes = require('./routes/contact')
+const buyingRoutes = require('./routes/buying')
 const adminRoutes = require('./routes/admin')
 const varMiddleware = require('./middleware/variables')
 const errorHandler = require('./middleware/error')
@@ -24,7 +28,21 @@ const PORT = process.env.PORT || 3000
 
 const hbs = exphbs.create({
     defaultLayout: 'main',
-    extname: 'hbs'
+    extname: 'hbs',
+    helpers: {
+        ifOr: function (v1, v2, options) {
+            if (v1 || v2) return options.fn(this)
+            return options.inverse(this)
+        },
+        ifAnd: function (v1, v2, options) {
+            if (v1 && v2) return options.fn(this)
+            return options.inverse(this)
+        },
+        ifEquals: function (v1, v2, options) {
+            if (v1 === v2) return options.fn(this)
+            return options.inverse(this)
+        }
+    }
 })
 
 const store = new MongoStore({
@@ -49,18 +67,23 @@ app.use(fileUpload());
 app.use(csrf())
 app.use(flash())
 app.use(helmet())
+app.use(compression())
 app.use(varMiddleware)
 app.use('', homeRoutes)
-app.use('/services', servicesRoutes)
-app.use('/employees', employeesRoutes)
+app.use('/products', productsRoutes)
+app.use('/product', productRoutes)
+app.use('/sales', salesRoutes)
+app.use('/search', searchRoutes)
 app.use('/about', aboutRoutes)
-app.use('/register', registerRoutes)
+app.use('/contact', contactRoutes)
+app.use('/buying', buyingRoutes)
+
 //admin
-app.use('/admin', adminRoutes.clients)
+app.use('/admin', adminRoutes.orders)
 app.use('/admin/login', adminRoutes.login)
-app.use('/admin/services', adminRoutes.services)
-app.use('/admin/employees', adminRoutes.employees)
-app.use('/admin/blacklist', adminRoutes.blacklist)
+app.use('/admin/categories', adminRoutes.categories)
+app.use('/admin/about', adminRoutes.about)
+app.use('/admin/products', adminRoutes.products)
 
 app.use(errorHandler)
 

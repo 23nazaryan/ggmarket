@@ -1,16 +1,22 @@
-<article>
-    <div class="heading-title">
-        <h1>Մեր մասին</h1>
-    </div>
-    <div class="row">
-        <div class="col-10 offset-1 shadow-lg about">
-            Կան Lorem Ipsum-ի շատ տարբերակներ, սակայն շատերը աղավաղվել են տարաբնույթ, երբեմն նույնիսկ լատիներենից շատ
-            հեռու և անհավանական բառերի և հումորի ավելացման արդյունքում: Եթե ուզում եք օգտագործել Lorem Ipsum, ապա երևի
-            չեք ցանկանա, որ այն պարունակի ինչ-որ թաքնված հումոր տեքստի միջնամասում: Ինտերնետում բոլոր Lorem Ipsum
-            արտադրիչները հակված են կրկնել նույն տեքստը մինչև ցանկալի ծավալի լրացումը. այնինչ իսկականը այս արտադրիչն է:
-            Այն օգտագործում է լատիներենի շուրջ 200 բառ` դրանք համադրելով նախադասության հնարավոր շարադասությունների հետ,
-            որպեսզի արտադրի ճշմարիտ Lorem Ipsum: Արտադրված Lorem Ipsum-ը, արդյունքում չունի կրկնություններ, հումորային
-            բովանդակություն կամ այլ անիրական բառեր:
+<div class="w3l_banner_nav_right">
+    <div class="privacy about">
+        <h3>Մեր մասին</h3>
+        <p class="animi">{{about.text}}</p>
+        <div class="agile_about_grids">
+            <div class="col-md-6 agile_about_grid_right">
+                <img src="/images/about/{{about.img}}" alt=" " class="img-responsive"/>
+            </div>
+            {{#if about.features}}
+                <h2 style="margin-top: 23px;">Յուրահատկություններ</h2>
+                <div class="col-md-6 agile_about_grid_left" style="margin-top: 23px;">
+                    <ol>
+                        {{#each about.features as |feature|}}
+                            <li>{{feature}}</li>
+                        {{/each}}
+                    </ol>
+                </div>
+            {{/if}}
+            <div class="clearfix"></div>
         </div>
     </div>
-</article>
+</div>

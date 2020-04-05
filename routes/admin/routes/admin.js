@@ -1,11 +1,11 @@
 const login = require('./login')
-const clients = require('./clients')
-const services = require('./services')
-const employees = require('./employees')
-const blacklist = require('./blacklist')
+const categories = require('./categories')
+const about = require('./about')
+const products = require('./products')
+const orders = require('./orders')
 
 module.exports.login = login
-module.exports.clients = clients
-module.exports.services = services
-module.exports.employees = employees
-module.exports.blacklist = blacklist
+module.exports.categories = categories
+module.exports.products = products
+module.exports.about = about
+module.exports.orders = orders

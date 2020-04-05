@@ -1,18 +1,154 @@
 {{> head }}
+
 <body>
-<div class="container-fluid">
-    <header class="row">
-        <a href="/">
-            <img src="/images/tooth.png" alt="" class="logo">
-        </a>
-        <h1 class="display-3">DENT</h1>
-        <p>Ատամնաբուժական կենտրոն</p>
-    </header>
-    {{> navbar }}
 
-    {{{body}}}
+{{> header }}
 
-    {{> footer }}
+{{> navbar }}
+
+{{#unless isHome}}
+    <div class="products-breadcrumb">
+        <div class="container">
+            <ul>
+                <li><i class="fa fa-home" aria-hidden="true"></i><a href="/">Գլխավոր էջ</a><span>|</span></li>
+                <li>{{title}}</li>
+            </ul>
+        </div>
+    </div>
+{{/unless}}
+
+<div class="banner">
+    {{> aside }}
+
+    {{{ body }}}
+
+    <div class="clearfix"></div>
 </div>
-</body>
-</html>
+
+<!--<div class="banner_bottom">
+    <div class="wthree_banner_bottom_left_grid_sub">
+    </div>
+    <div class="wthree_banner_bottom_left_grid_sub1">
+        <div class="col-md-4 wthree_banner_bottom_left">
+            <div class="wthree_banner_bottom_left_grid">
+                <img src="images/4.jpg" alt=" " class="img-responsive" />
+                <div class="wthree_banner_bottom_left_grid_pos">
+                    <h4>Discount Offer <span>25%</span></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 wthree_banner_bottom_left">
+            <div class="wthree_banner_bottom_left_grid">
+                <img src="images/5.jpg" alt=" " class="img-responsive" />
+                <div class="wthree_banner_btm_pos">
+                    <h3>introducing <span>best store</span> for <i>groceries</i></h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 wthree_banner_bottom_left">
+            <div class="wthree_banner_bottom_left_grid">
+                <img src="images/6.jpg" alt=" " class="img-responsive" />
+                <div class="wthree_banner_btm_pos1">
+                    <h3>Save <span>Upto</span> $10</h3>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>-->
+
+{{#if saleProducts}}
+    <div class="top-brands">
+        <div class="container">
+            <h3>Թեժ ակցիաներ</h3>
+            <div class="agile_top_brands_grids">
+                {{#each saleProducts}}
+                    <div class="col-md-3 w3ls_w3l_banner_left" style="margin-top: 30px;">
+                        <div class="hover14 column">
+                            <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+                                {{#if is_sale}}
+                                    <div class="agile_top_brand_left_grid_pos">
+                                        <img src="/images/offer.png" alt=" " class="img-responsive" />
+                                    </div>
+                                {{/if}}
+                                <div class="agile_top_brand_left_grid1">
+                                    <figure>
+                                        <div class="snipcart-item block">
+                                            <div class="snipcart-thumb">
+                                                <a href="/product/{{_id}}">
+                                                    <img src="/images/products/{{img}}" alt="{{title}}" title="{{title}}" class="img-responsive" />
+                                                </a>
+                                                <p>{{title}}</p>
+                                                {{#if is_sale}}
+                                                    <h4>{{new_price}} :դր <span>{{price}} :դր</span></h4>
+                                                {{else}}
+                                                    <h4>{{price}} :դր</h4>
+                                                {{/if}}
+                                            </div>
+                                            <div class="snipcart-details">
+                                                <form action="#" method="post">
+                                                    <fieldset>
+                                                        <input type="hidden" name="cmd" value="_cart" />
+                                                        <input type="hidden" name="add" value="1" />
+                                                        <input type="hidden" name="business" value=" " />
+                                                        <input type="hidden" name="item_name" value="knorr instant soup" />
+                                                        <input type="hidden" name="amount" value="3.00" />
+                                                        <input type="hidden" name="discount_amount" value="1.00" />
+                                                        <input type="hidden" name="currency_code" value="USD" />
+                                                        <input type="hidden" name="return" value=" " />
+                                                        <input type="hidden" name="cancel_return" value=" " />
+                                                        <input type="submit" name="submit" value="Ավելացնել" class="button" />
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+{{/if}}
+
+{{#ifAnd isHome topCategories}}
+    <div class="fresh-vegetables">
+        <div class="container">
+            <h3>Թոփ բաժիններ</h3>
+            <div class="w3l_fresh_vegetables_grids">
+                <div class="col-md-3 w3l_fresh_vegetables_grid w3l_fresh_vegetables_grid_left">
+                    <div class="w3l_fresh_vegetables_grid2">
+                        <ul>
+                            {{#each topCategories}}
+                                <li><i class="fa fa-check" aria-hidden="true"></i><a href="/products/{{_id}}">{{title}}</a></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-9 w3l_fresh_vegetables_grid_right">
+                    {{#each topCategories}}
+                        <div class="col-md-4 w3l_fresh_vegetables_grid" style="margin-bottom: 23px;">
+                            <div class="w3l_fresh_vegetables_grid1" style="overflow: hidden; height: 150px;">
+                                <img src="/images/categories/{{img}}" alt="{{title}}" class="img-responsive" />
+                            </div>
+                        </div>
+                    {{/each}}
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+{{/ifAnd}}
+
+{{#ifAnd isContact about.map_url}}
+    <div class="map">
+        <iframe src="{{about.map_url}}" style="border:0"></iframe>
+    </div>
+{{/ifAnd}}
+
+{{> footer }}

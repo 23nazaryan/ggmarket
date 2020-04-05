@@ -1,0 +1,112 @@
+<section class="wrapper">
+    <h3><i class="fa fa-angle-right"></i> {{title}}</h3>
+    <div class="row mt">
+        <div class="col-lg-12">
+            <div class="form-panel">
+                <div class="form">
+                    <form class="cmxform form-horizontal style-form" method="POST" action="{{action}}" enctype="multipart/form-data">
+                        <input type="hidden" class="csrf" name="_csrf" value="{{csrf}}">
+
+                        <div class="form-group">
+                            <label for="category_id" class="control-label col-lg-2">Բաժին</label>
+                            <div class="col-lg-5">
+                                <select class="form-control category-select" id="category_id" name="category_id" data-id="{{product.category_id}}">
+                                    {{#each categories}}
+                                        <option id="{{_id}}" value="{{_id}}">{{title}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="title" class="control-label col-lg-2">Անուն</label>
+                            <div class="col-lg-5">
+                                <input class="form-control" id="title" name="title" type="text" value="{{product.title}}"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="descr" class="control-label col-lg-2">Նկարագրություն</label>
+                            <div class="col-lg-5">
+                                <textarea class="form-control" id="descr" rows="5" name="descr">{{product.descr}}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="price" class="control-label col-lg-2">Գին</label>
+                            <div class="col-lg-5">
+                                <input class="form-control" id="price" name="price" type="text" value="{{product.price}}"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="is_sale" class="control-label col-lg-2">Զեղչ</label>
+                            <div class="col-lg-5">
+                                <input class="checkbox" type="checkbox" data-type="sale" id="is_sale" name="is_sale" {{#if product.is_sale}}value="1" checked{{/if}}>
+                            </div>
+                        </div>
+
+                        <div class="form-group new_price" {{#unless product.is_sale}}style="display: none" {{/unless}}>
+                            <label for="new_price" class="control-label col-lg-2">Նոր գին</label>
+                            <div class="col-lg-5">
+                                <input class="form-control" id="new_price" name="new_price" type="text" value="{{product.new_price}}"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sale_type" class="control-label col-lg-2">Վաճառքի տեսակ</label>
+                            <div class="col-lg-5">
+                                <select class="form-control category-select" id="sale_type" name="sale_type">
+                                    <option value="0">Կշիռով</option>
+                                    <option value="1" {{#if sale_type}}selected{{/if}}>Քանակով</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="count" class="control-label col-lg-2">Քանակ</label>
+                            <div class="col-lg-5">
+                                <input class="form-control" id="count" name="count" min="0" type="number" value="{{product.count}}"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="is_top" class="control-label col-lg-2">Թոփ</label>
+                            <div class="col-lg-5">
+                                <input class="checkbox" type="checkbox" id="is_top" name="is_top" {{#if product.is_top}}value="1" checked{{/if}}>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="keywords" class="control-label col-lg-2">Որոնման բառեր</label>
+                            <div class="col-lg-5">
+                                <input class="form-control" id="keywords" name="keywords" type="text" value="{{product.keywords}}"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="img" class="control-label col-lg-2">Նկար</label>
+                            <div class="col-lg-5">
+                                <input class="form-control" id="img" name="img" type="file" />
+                            </div>
+                        </div>
+
+                        <div class="col-5" style="margin: 50px">
+                            {{#if product.img}}
+                                <img id="image_upload_preview" src="/images/products/{{product.img}}" style="width: 200px; margin-bottom: 15px" />
+                            {{else}}
+                                <img id="image_upload_preview" style="width: 200px; margin-bottom: 15px" />
+                            {{/if}}
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-5">
+                                <button type="submit" class="btn btn-success">Պահպանել</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

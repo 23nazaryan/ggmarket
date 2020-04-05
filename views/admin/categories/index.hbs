@@ -1,0 +1,59 @@
+<section class="wrapper">
+    <div class="row mt">
+        <div class="col-md-12">
+            <div class="content-panel">
+                <table class="table table-striped table-advance table-hover">
+                    <h4><i class="fa fa-angle-right"></i> {{title}}</h4>
+                    {{#unless top}}
+                        <a class="btn btn-success" style="margin-left: 20px;" href="/admin/categories/create/{{#if sub}}sub{{/if}}">Ավելացնել</a>
+                    {{/unless}}
+                    <hr>
+                    <thead>
+                    <tr>
+                        <th>Անուն</th>
+
+                        {{#if sub}}
+                            <th>Թոփ</th>
+                            <th>Դիտումներ</th>
+                            <th>Գլխավոր բաժին</th>
+                            <th>Նկար</th>
+                        {{/if}}
+
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#if categories.length}}
+                        {{#each categories}}
+                            <tr>
+                                <td>{{title}}</td>
+
+                                {{#if parent_id}}
+                                    <td>
+                                        {{#if is_top}}
+                                            Այո
+                                        {{else}}
+                                            Ոչ
+                                        {{/if}}
+                                    </td>
+                                    <td>{{views}}</td>
+                                    <th>{{parent_id.title}}</th>
+                                    <td style="width: 400px;">
+                                        <img src="/images/categories/{{img}}" style="width: 50%;">
+                                    </td>
+                                {{else}}
+                                    <td><a href="/admin/categories/index/sub/{{_id}}">Ենթաբաժիններ</a></td>
+                                {{/if}}
+                                <td>
+                                    <a href="/admin/categories/edit/{{_id}}/{{@root.type}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                    <a href="/admin/categories/delete/{{_id}}/{{@root.type}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+                                </td>
+                            </tr>
+                        {{/each}}
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

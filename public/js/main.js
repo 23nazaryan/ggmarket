@@ -32,19 +32,3 @@ if ($form) {
 		}
 	})
 }
-
-/*
-$('#clients').change(function(){
-	let cat = $(this).val();
-	$.ajax({
-		type: 'POST',
-		url: '/site/',
-		data: {cat: cat},
-		success: function(cat){
-			$('.clients-table').html(cat).show();
-		},
-		error: function(){
-			console.log('error');
-		}
-	});
-});*/

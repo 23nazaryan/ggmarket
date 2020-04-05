@@ -1,63 +1,30 @@
-<div class="row">
-    <aside>
-        <nav class="navbar navbar-expand-lg navbar-dark ">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    {{#if isHome}}
-                        <li class="nav-item active">
-                            <a href="/" class="nav-link">Գլխավոր էջ</a>
-                        </li>
-                    {{else}}
-                        <li class="nav-item">
-                            <a href="/" class="nav-link">Գլխավոր էջ</a>
-                        </li>
-                    {{/if}}
-
-                    {{#if isService}}
-                        <li class="nav-item active">
-                            <a href="/services" class="nav-link">Ծառայություններ</a>
-                        </li>
-                    {{else}}
-                        <li class="nav-item">
-                            <a href="/services" class="nav-link">Ծառայություններ</a>
-                        </li>
-                    {{/if}}
-
-                    {{#if isEmployee}}
-                        <li class="nav-item active">
-                            <a href="/employees" class="nav-link">Մեր աշխատակիցները</a>
-                        </li>
-                    {{else}}
-                        <li class="nav-item">
-                            <a href="/employees" class="nav-link">Մեր աշխատակիցները</a>
-                        </li>
-                    {{/if}}
-
-                    {{#if isAbout}}
-                        <li class="nav-item active">
-                            <a href="/about" class="nav-link">Մեր մասին</a>
-                        </li>
-                    {{else}}
-                        <li class="nav-item">
-                            <a href="/about" class="nav-link">Մեր մասին</a>
-                        </li>
-                    {{/if}}
-
-                    {{#if isReg}}
-                        <li class="nav-item active">
-                            <a href="/register" class="nav-link">Հերթագրվել</a>
-                        </li>
-                    {{else}}
-                        <li class="nav-item">
-                            <a href="/register" class="nav-link">Հերթագրվել</a>
-                        </li>
-                    {{/if}}
-                </ul>
+<div class="logo_products">
+    <div class="container">
+        <div class="w3ls_logo_products_left">
+            <h1><a href="/"><span>GG</span> Market</a></h1>
+        </div>
+        <div class="w3ls_logo_products_left1">
+            <ul class="special_items">
+                <li><a href="/buying">Պատվիրում, առաքում և վճարում</a><i>/</i></li>
+                <li><a href="/about">Մեր մասին</a><i>/</i></li>
+                <li><a href="/contact">Առաջարկներ և բողոքներ</a><i>/</i></li>
+            </ul>
+        </div>
+        <div class="w3ls_logo_products_left1">
+            <ul class="phone_email">
+                <li><i class="fa fa-phone" aria-hidden="true"></i>{{about.tel}}</li>
+                <li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:{{about.email}}">{{about.email}}</a></li>
+            </ul>
+        </div>
+        <div class="clearfix"> </div>
+        {{#if error}}
+            <div class="alert alert-danger" role="alert" style="margin-top: 23px;">
+                {{error}}
             </div>
-        </nav>
-    </aside>
+        {{else if success}}
+            <div class="alert alert-success" role="alert" style="margin-top: 23px;">
+                {{success}}
+            </div>
+        {{/if}}
+    </div>
 </div>

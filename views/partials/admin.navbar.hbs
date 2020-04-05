@@ -1,69 +1,33 @@
 <aside>
-    <div id="sidebar" class="nav-collapse ">
+    <div id="sidebar" class="nav-collapse">
         <ul class="sidebar-menu" id="nav-accordion">
-            {{#if isClients}}
-                <li>
-                    <a href="/admin" class="active">
-                        <i class="fa fa-address-book"></i>
-                        <span>Հաճախորդներ </span>
-                    </a>
-                </li>
-            {{else}}
-                <li>
-                    <a href="/admin">
-                        <i class="fa fa-address-book"></i>
-                        <span>Հաճախորդներ </span>
-                    </a>
-                </li>
-            {{/if}}
-
-            {{#if isServices}}
-                <li>
-                    <a href="/admin/services" class="active">
-                        <i class="fa fa-medkit"></i>
-                        <span>Ծառայություններ </span>
-                    </a>
-                </li>
-            {{else}}
-                <li>
-                    <a href="/admin/services">
-                        <i class="fa fa-medkit"></i>
-                        <span>Ծառայություններ </span>
-                    </a>
-                </li>
-            {{/if}}
-
-            {{#if isEmployees}}
-                <li>
-                    <a href="/admin/employees" class="active">
-                        <i class="fa fa-user-md"></i>
-                        <span>Աշխատակիցներ </span>
-                    </a>
-                </li>
-            {{else}}
-                <li>
-                    <a href="/admin/employees">
-                        <i class="fa fa-user-md"></i>
-                        <span>Աշխատակիցներ </span>
-                    </a>
-                </li>
-            {{/if}}
-
-            {{#if isBlacklist}}
-                <li>
-                    <a href="/admin/blacklist" class="active">
-                        <i class="fa fa-user-times"></i>
-                        <span>Սև ցուցակ </span>
-                    </a>
-                </li>
-            {{else}}
-                <li>
-                    <a href="/admin/blacklist">
-                        <i class="fa fa-user-times"></i>
-                        <span>Սև ցուցակ </span>
-                    </a>
-                </li>
-            {{/if}}
+            <li class="sub-menu">
+                <a href="javascript:;" {{#if isProducts}}class="active"{{/if}}>
+                    <i class="fa fa-shopping-cart"></i>
+                    <span>Ապրանքներ</span>
+                </a>
+                <ul class="sub" {{#if isProducts}}style="display: block;"{{/if}}>
+                    <li><a href="/admin/products/index">Առկա</a></li>
+                    <li><a href="/admin/products/index/ended">Վերջացած</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" {{#if isCategories}}class="active"{{/if}}>
+                    <i class="fa fa-bars"></i>
+                    <span>Բաժիններ</span>
+                </a>
+                <ul class="sub" {{#if isCategories}}style="display: block;"{{/if}}>
+                    <li><a href="/admin/categories/index">Գլխավոր</a></li>
+                    <li><a href="/admin/categories/index/sub">Ենթաբաժիններ</a></li>
+                    <li><a href="/admin/categories/index/top">Թոփ</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/admin/about" {{#if isAbout}}class="active"{{/if}}>
+                    <i class="fa fa-info"></i>
+                    <span>Տեղեկություններ</span>
+                </a>
+            </li>
         </ul>
     </div>
 </aside>

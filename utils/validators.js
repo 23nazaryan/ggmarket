@@ -13,3 +13,9 @@ exports.registerValidators = [
     body('employee_id', ).isLength({min: 1}).withMessage('Ընտրեք բժիշկ'),
     body('date', ).isLength({min: 1}).withMessage('Ընտրեք ամսաթիվ')
 ]
+
+exports.contactValidators = [
+    body('message', ).isLength({min: 1}).withMessage('Մուտքագրեք նամակ').trim(),
+    body('email', ).isLength({min: 1}).withMessage('Մուտքագրեք էլ․ հասցե').trim().normalizeEmail(),
+    body('email').isEmail().withMessage('Մուտքագրեք գործող էլ․ հասցե'),
+]
