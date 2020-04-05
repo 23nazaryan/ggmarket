@@ -19,7 +19,7 @@ const product = new Schema({
     },
     sale_type: {
         type: Number,
-        default: 1
+        default: 0
     },
     count: {
         type: Number,

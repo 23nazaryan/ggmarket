@@ -2081,6 +2081,12 @@ h2.typoh2 {
     -webkit-transition: .4s ease-in;
 }
 
+/*Product page*/
+
+div.snipcart-item  .form-group input {
+    width: 100px;
+}
+
 @media (max-width: 768px) {
     .grid_5 {
         padding: 0 0 1em;
