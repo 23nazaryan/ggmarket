@@ -46,7 +46,7 @@ router.post('/', contactValidators, async (req, res) => {
         if (!errors.isEmpty()) {
             error = errors.array()[0].msg
         } else {
-            await transporter.sendMail(contactEmail(email, message))
+            transporter.sendMail(contactEmail(email, message))
             req.flash('success', 'Շնորհակալություն մեր հետ կապնվելու համար։ Շուտով մենք կպատասխանենք Ձեզ։')
 
             return res.status(200).redirect('/contact')
