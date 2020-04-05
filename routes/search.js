@@ -13,7 +13,11 @@ router.post('/', async (req, res) => {
             return res.redirect('/')
         }
 
-        const products = await Product.find({keywords: {$regex: search, $options : 'i'}})
+        const p = req.query.p
+        const query = {
+            keywords: {$regex: search, $options : 'i'}
+        }
+        const products = await productHelper.getProducts(p, query)
         const categories = await categoryHelper.getCategories()
         const saleProducts = await productHelper.getHotSales()
         const about = await About.findOne()

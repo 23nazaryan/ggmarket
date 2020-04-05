@@ -7,7 +7,11 @@ const router = new Router()
 
 router.get('/', async (req, res) => {
     try {
-        const products = await productHelper.getHotSales(null, 9999)
+        const p = req.query.p
+        const query = {
+            is_sale: 1
+        }
+        const products = await productHelper.getProducts(p, query)
         const categories = await categoryHelper.getCategories()
         const about = await About.findOne()
 

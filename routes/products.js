@@ -3,12 +3,17 @@ const Category = require('../models/Category')
 const Product = require('../models/Product')
 const About = require('../models/About')
 const categoryHelper = require('../utils/categoryHelper')
+const productHelper = require('../utils/productHelper')
 const router = new Router()
 
 router.get('/:id', async (req, res) => {
     try {
+        const p = req.query.p
+        const query = {
+            category_id: req.params.id
+        }
+        const products = await productHelper.getProducts(p, query)
         const category = await Category.findById(req.params.id)
-        const products = await Product.find({category_id: req.params.id})
         const categories = await categoryHelper.getCategories()
         const about = await About.findOne()
 

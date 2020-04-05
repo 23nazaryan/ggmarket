@@ -6,7 +6,15 @@
 
 {{> navbar }}
 
-{{#unless isHome}}
+{{#if isHome}}
+    <div class="products-breadcrumb">
+        <div class="container">
+            <ul>
+                <li><i class="fa fa-home" aria-hidden="true"></i><a href="/">Գլխավոր էջ</a>
+            </ul>
+        </div>
+    </div>
+{{else}}
     <div class="products-breadcrumb">
         <div class="container">
             <ul>
@@ -15,7 +23,7 @@
             </ul>
         </div>
     </div>
-{{/unless}}
+{{/if}}
 
 <div class="banner">
     {{> aside }}
