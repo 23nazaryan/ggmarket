@@ -47,7 +47,15 @@ const about = new Schema({
     },
     instagram_link: {
         type: String
-    }
+    },
+    createdAt: {type: Date, default: Date.now()},
+    updatedAt: {type: Date, default: Date.now()}
 })
+
+about.pre('save', function preSave(next){
+    const about = this
+    about.updatedAt = Date.now()
+    next()
+});
 
 module.exports = model('About', about)

@@ -50,7 +50,15 @@ const product = new Schema({
         ref: 'Category',
         required: true
     },
+    createdAt: {type: Date, default: Date.now()},
+    updatedAt: {type: Date, default: Date.now()}
 })
+
+product.pre('save', function preSave(next){
+    const product = this
+    product.updatedAt = Date.now()
+    next()
+});
 
 product.plugin(paginate)
 

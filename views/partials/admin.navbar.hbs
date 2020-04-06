@@ -2,6 +2,18 @@
     <div id="sidebar" class="nav-collapse">
         <ul class="sidebar-menu" id="nav-accordion">
             <li class="sub-menu">
+                <a href="javascript:;" {{#if isOrders}}class="active"{{/if}}>
+                    <i class="fa fa-truck"></i>
+                    <span>Պատվերներ</span>
+                </a>
+                <ul class="sub" {{#if isOrders}}style="display: block;"{{/if}}>
+                    <li><a href="/admin">Նոր</a></li>
+                    <li><a href="/admin/delivered">Առաքված</a></li>
+                    <li><a href="/admin/cancelled">Չեղարկված</a></li>
+                </ul>
+            </li>
+
+            <li class="sub-menu">
                 <a href="javascript:;" {{#if isProducts}}class="active"{{/if}}>
                     <i class="fa fa-shopping-cart"></i>
                     <span>Ապրանքներ</span>
@@ -11,6 +23,7 @@
                     <li><a href="/admin/products/index/ended">Վերջացած</a></li>
                 </ul>
             </li>
+
             <li class="sub-menu">
                 <a href="javascript:;" {{#if isCategories}}class="active"{{/if}}>
                     <i class="fa fa-bars"></i>
@@ -22,6 +35,7 @@
                     <li><a href="/admin/categories/index/top">Թոփ</a></li>
                 </ul>
             </li>
+
             <li>
                 <a href="/admin/about" {{#if isAbout}}class="active"{{/if}}>
                     <i class="fa fa-info"></i>

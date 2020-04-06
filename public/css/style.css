@@ -3011,13 +3011,13 @@ td.invert-image a img {
     position: relative;
 }
 
-.close1, .close2, .close3 {
-    background: url('../images/close_1.png') no-repeat 0px 0px;
+.delete {
+    background: url('../images/delete.png') no-repeat 0px 0px;
     cursor: pointer;
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     position: absolute;
-    right: 15px;
+    right: 20px;
     top: -13px;
     -webkit-transition: color 0.2s ease-in-out;
     -moz-transition: color 0.2s ease-in-out;
@@ -4603,10 +4603,6 @@ input.checkbox:checked:after {
     #PPMiniCart {
         top: 140px !important;
     }
-
-    #PPMiniCart form {
-        max-height: 185px !important;
-    }
 }
 
 @media (max-width: 667px) {
@@ -4635,15 +4631,12 @@ input.checkbox:checked:after {
     #PPMiniCart {
         left: 36% !important;
     }
-
-    #PPMiniCart form {
-        max-height: 165px !important;
-    }
 }
 
 @media (max-width: 640px) {
     #PPMiniCart form {
         max-height: 400px !important;
+        width: 580px !important;
     }
 
     .fixed {
@@ -4825,8 +4818,8 @@ input.checkbox:checked:after {
         width: 464px !important;
     }
 
-    #PPMiniCart form {
-        max-height: 210px !important;
+    #PPMiniCart .minicart-submit {
+        right: -50px !important;
     }
 }
 
@@ -4860,7 +4853,11 @@ input.checkbox:checked:after {
     }
 
     #PPMiniCart form {
-        max-height: 100px !important;
+        width: 480px !important;
+    }
+
+    #PPMiniCart .minicart-submit {
+        right: -50px !important;
     }
 
     .checkout-right h4, .address_form_agile h4 {
@@ -4875,10 +4872,6 @@ input.checkbox:checked:after {
 }
 
 @media (max-width: 480px) {
-    #PPMiniCart form {
-        max-height: 350px !important;
-    }
-
     .w3l_search {
         margin: .1em 0 0.5em 1.7em;
         width: 51%;
@@ -5233,6 +5226,7 @@ input.checkbox:checked:after {
 
     #PPMiniCart form {
         width: 400px !important;
+        height: 300px !important;
     }
 
     #PPMiniCart ul {
@@ -5241,6 +5235,11 @@ input.checkbox:checked:after {
 
     #PPMiniCart {
         left: 51% !important;
+    }
+
+    #PPMiniCart .minicart-submit {
+        bottom: -60px !important;
+        right: 10px !important;
     }
 }
 
@@ -5555,6 +5554,10 @@ input.checkbox:checked:after {
 }
 
 @media (max-width: 375px) {
+    .delete {
+        right: 18px;
+    }
+
     .wthree_banner_btm_pos h3 span {
         padding-left: 5em;
     }
@@ -5625,6 +5628,10 @@ input.checkbox:checked:after {
 }
 
 @media (max-width: 320px) {
+    .delete {
+        right: 15px;
+    }
+
     .agileits_social_icons li a i {
         padding: .9em 0 0;
     }

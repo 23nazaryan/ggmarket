@@ -20,7 +20,9 @@ router.get('/', async (req, res) => {
             categories,
             saleProducts,
             topCategories,
-            forSliders
+            forSliders,
+            error: req.flash('error'),
+            success: req.flash('success'),
         })
     } catch (e) {
         console.log(e)

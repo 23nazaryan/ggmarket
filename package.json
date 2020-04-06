@@ -27,7 +27,8 @@
     "mongoose": "^5.9.1",
     "mongoose-paginate": "^5.0.3",
     "nodemailer": "^6.4.2",
-    "randomstring": "^1.1.5"
+    "randomstring": "^1.1.5",
+    "validate-phone-number-node-js": "0.0.1"
   },
   "devDependencies": {
     "handlebars": "^4.5.0",

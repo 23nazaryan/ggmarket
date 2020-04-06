@@ -49,10 +49,20 @@ const changeCountAndPrice = (event) => {
         countInput.value = value.toFixed(2)
     }
 
-    document.getElementById('amount').value = priceInput.value
-    document.getElementById('cart-count').value = countInput.value
+    document.getElementById('quantity').value = countInput.value
 }
 
-function isInt(n) {
-    return n % 1 === 0;
+const deleteButtons = document.querySelectorAll('.delete')
+
+if (deleteButtons) {
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', event => {
+            const id = event.currentTarget.dataset.id
+            const row = document.querySelector('tr[data-id="'+id+'"]')
+            const product = document.querySelector('div[data-product-id="'+id+'"]')
+
+            row.style.display = 'none'
+            product.remove()
+        })
+    })
 }
