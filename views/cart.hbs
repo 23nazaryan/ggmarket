@@ -1,7 +1,6 @@
 <div class="w3l_banner_nav_right">
     <div class="privacy about">
         <h3>{{title}}</h3>
-
         <div class="checkout-right">
             <h4>Ձեր զամբյուղում կա: <span>{{products.length}} ապրանք</span></h4>
             <table class="timetable_sub">
@@ -75,6 +74,8 @@
                         {{#each products}}
                             <div data-product-id="{{id}}" style="display: none;">
                                 <input type="hidden" name="products[{{@key}}][id]" value="{{id}}" />
+                                <input type="hidden" name="products[{{@key}}][title]" value="{{title}}" />
+                                <input type="hidden" name="products[{{@key}}][img]" value="{{img}}" />
                                 <input type="hidden" name="products[{{@key}}][count]" value="{{count}}"/>
                                 <input type="hidden" name="products[{{@key}}][amount]" value="{{amount}}" />
                             </div>
@@ -82,10 +83,7 @@
                     {{/if}}
                 </form>
             </div>
-
             <div class="clearfix"> </div>
-
         </div>
-
     </div>
 </div>

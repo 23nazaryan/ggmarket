@@ -1,0 +1,77 @@
+<section id="main-content" style="font-size: 18px;">
+    <section class="wrapper">
+        <div class="col-lg-12 mt">
+            <div class="row content-panel">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <div class="invoice-body">
+                        <div class="pull-left">
+                            <h1>Պատվեր</h1>
+                            <address style="font-size: 20px;">
+                                <abbr title="address">Հասցե:</abbr>&nbsp;&nbsp;&nbsp;{{order.address}}
+                                <br>
+                                <abbr title="Phone">Հեռ:</abbr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{order.tel}}
+                            </address>
+                        </div>
+                        <div class="pull-right">
+                            <h2>{{status}}</h2>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div>
+                                    <div class="pull-left"> Ամսաթիվ : </div>
+                                    <div class="pull-right"> {{order.createdAt}} </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <br>
+                                <div class="well well-small green">
+                                    <div class="pull-left"> Ընհանուր գումար</div>
+                                    <div class="pull-left"> {{order.amount}} ։դրամ </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th style="width:60px" class="text-center">Նկար</th>
+                                <th class="text-left">Անուն</th>
+                                <th style="width:140px" class="text-right">Քանակ</th>
+                                <th style="width:90px" class="text-right">Գին</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {{#each order.products}}
+                                    <tr>
+                                        <td class="text-center">
+                                            <img src="/images/products/{{img}}" style="width: 100px">
+                                        </td>
+                                        <td>{{title}}</td>
+                                        <td class="text-right">{{count}}</td>
+                                        <td class="text-right">{{amount}}</td>
+                                    </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                        <br>
+                        <br>
+                        <div class="row">
+                            {{#ifEquals order.status 0 2}}
+                                <a href="/admin/orders/confirm/{{order.id}}" class="btn btn-success">Հաստատել</a>
+                                &nbsp;&nbsp;&nbsp;
+                            {{/ifEquals}}
+                            {{#ifEquals order.status 0 1}}
+                                <a href="/admin/orders/cancel/{{order.id}}" class="btn btn-warning">Չեղարկել</a>
+                                &nbsp;&nbsp;&nbsp;
+                            {{/ifEquals}}
+                            <a href="/admin/orders/delete/{{order.id}}" class="btn btn-danger">Ձնջել</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

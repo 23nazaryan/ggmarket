@@ -23,12 +23,18 @@ router.post('/', orderValidators, async (req, res) => {
 
             return res.status(422).redirect('/order')
         }
-
         const {tel, address, products} = req.body
+        let amount = 0
+
+        for (product of products) {
+            amount += parseInt(product.amount)
+        }
+
         const order = new Order({
             tel,
             address,
-            products
+            products,
+            amount
         })
 
         await order.save()

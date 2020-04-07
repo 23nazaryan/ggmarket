@@ -18,6 +18,10 @@ const order = new Schema({
         type: Number,
         default: 0
     },
+    amount: {
+        type: Number,
+        required: true
+    },
     createdAt: {type: String, default: dateFormat(new Date(), "HH:MM dd-mm-yyyy")},
     updatedAt: {type: String, default: dateFormat(new Date(), "HH:MM dd-mm-yyyy")}
 })
