@@ -4808,6 +4808,7 @@ input.checkbox:checked:after {
 
     #PPMiniCart form {
         width: 506px !important;
+        max-height: 400px !important;
     }
 
     #PPMiniCart {
@@ -5221,12 +5222,12 @@ input.checkbox:checked:after {
     .product_list_header input.button {
         margin: 0;
         padding: .3em 2.5em .3em 1em;
-        background: url(../images/cart.png) no-repeat 116px 5px;
+        background: url(../images/cart.png) no-repeat 85px 8px;
     }
 
     #PPMiniCart form {
         width: 400px !important;
-        height: 300px !important;
+        max-height: 350px !important;
     }
 
     #PPMiniCart ul {
@@ -5238,7 +5239,8 @@ input.checkbox:checked:after {
     }
 
     #PPMiniCart .minicart-submit {
-        bottom: -60px !important;
+        margin-bottom: 20px;
+        bottom: -85px !important;
         right: 10px !important;
     }
 }
@@ -5517,6 +5519,7 @@ input.checkbox:checked:after {
     }
 
     #PPMiniCart form {
+        max-height: 300px;
         width: 300px !important;
         padding: 10px 10px 40px !important;
     }
@@ -5993,7 +5996,7 @@ input.checkbox:checked:after {
 
     .product_list_header input.button {
         padding: .3em 2.5em .3em 0.8em;
-        background: url(../images/cart.png) no-repeat 105px 5px;
+        background: url(../images/cart.png) no-repeat 75px 5px;
         font-size: 13px;
     }
 }
