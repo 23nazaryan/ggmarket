@@ -1,4 +1,5 @@
 const {Schema, model} = require('mongoose')
+const dateFormat = require('dateformat')
 
 const order = new Schema({
     tel: {
@@ -17,13 +18,13 @@ const order = new Schema({
         type: Number,
         default: 0
     },
-    createdAt: {type: Date, default: Date.now()},
-    updatedAt: {type: Date, default: Date.now()}
+    createdAt: {type: String, default: dateFormat(new Date(), "HH:MM dd-mm-yyyy")},
+    updatedAt: {type: String, default: dateFormat(new Date(), "HH:MM dd-mm-yyyy")}
 })
 
 order.pre('save', function preSave(next){
     const order = this
-    order.updatedAt = Date.now()
+    order.updatedAt = dateFormat(new Date(), "HH:MM dd-mm-yyyy")
     next()
 });
 

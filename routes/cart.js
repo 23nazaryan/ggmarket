@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
     try {
         const categories = await categoryHelper.getCategories()
         const about = await About.findOne()
-        const products = req.body.Products
+        const products = req.body.products
 
         res.render('cart', {
             title: 'Պատվեր',

@@ -8,29 +8,7 @@
  * @license MIT <https://github.com/jeffharrell/minicart/raw/master/LICENSE.md>
  */
 
-;(function e(t, n, r) {
-    function s(o, u) {
-        if (!n[o]) {
-            if (!t[o]) {
-                var a = typeof require == "function" && require;
-                if (!u && a) return a(o, !0);
-                if (i) return i(o, !0);
-                throw new Error("Cannot find module '" + o + "'")
-            }
-            var f = n[o] = {exports: {}};
-            t[o][0].call(f.exports, function (e) {
-                var n = t[o][1][e];
-                return s(n ? n : e)
-            }, f, f.exports, e, t, n, r)
-        }
-        return n[o].exports
-    }
-
-    var i = typeof require == "function" && require;
-    for (var o = 0; o < r.length; o++) s(r[o]);
-    return s
-})({
-    1: [function (require, module, exports) {
+;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 
 
 //
@@ -46,7 +24,6 @@
         function isArray(xs) {
             return toString.call(xs) === '[object Array]';
         }
-
         exports.isArray = typeof Array.isArray === 'function' ? Array.isArray : isArray;
 
 // Array.prototype.indexOf is supported in IE9
@@ -99,7 +76,8 @@
                 if (array.hasOwnProperty(i)) {
                     if (isValueSet) {
                         value = callback(value, array[i], i, array);
-                    } else {
+                    }
+                    else {
                         value = array[i];
                         isValueSet = true;
                     }
@@ -145,15 +123,15 @@
         function create(prototype, properties) {
             var object;
             if (prototype === null) {
-                object = {'__proto__': null};
-            } else {
+                object = { '__proto__' : null };
+            }
+            else {
                 if (typeof prototype !== 'object') {
                     throw new TypeError(
                         'typeof prototype[' + (typeof prototype) + '] != \'object\''
                     );
                 }
-                var Type = function () {
-                };
+                var Type = function () {};
                 Type.prototype = prototype;
                 object = new Type();
                 object.__proto__ = prototype;
@@ -163,7 +141,6 @@
             }
             return object;
         }
-
         exports.create = typeof Object.create === 'function' ? Object.create : create;
 
 // Object.keys and Object.getOwnPropertyNames is supported in IE9 however
@@ -228,7 +205,7 @@
 
 // Object.getOwnPropertyDescriptor - supported in IE8 but only on dom elements
         function valueObject(value, key) {
-            return {value: value[key]};
+            return { value: value[key] };
         }
 
         if (typeof Object.getOwnPropertyDescriptor === 'function') {
@@ -249,14 +226,14 @@
             exports.getOwnPropertyDescriptor = valueObject;
         }
 
-    }, {}], 2: [function (require, module, exports) {
+    },{}],2:[function(require,module,exports){
 
 // not implemented
 // The reason for having an empty file and not throwing is to allow
 // untraditional implementation of this module.
 
-    }, {}], 3: [function (require, module, exports) {
-        var process = require("__browserify_process");// Copyright Joyent, Inc. and other Node contributors.
+    },{}],3:[function(require,module,exports){
+        var process=require("__browserify_process");// Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -314,13 +291,13 @@
 // 'root' is just a slash, or nothing.
         var splitPathRe =
             /^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;
-        var splitPath = function (filename) {
+        var splitPath = function(filename) {
             return splitPathRe.exec(filename).slice(1);
         };
 
 // path.resolve([from ...], to)
 // posix version
-        exports.resolve = function () {
+        exports.resolve = function() {
             var resolvedPath = '',
                 resolvedAbsolute = false;
 
@@ -342,7 +319,7 @@
             // handle relative paths to be safe (might happen when process.cwd() fails)
 
             // Normalize the path
-            resolvedPath = normalizeArray(shims.filter(resolvedPath.split('/'), function (p) {
+            resolvedPath = normalizeArray(shims.filter(resolvedPath.split('/'), function(p) {
                 return !!p;
             }), !resolvedAbsolute).join('/');
 
@@ -351,12 +328,12 @@
 
 // path.normalize(path)
 // posix version
-        exports.normalize = function (path) {
+        exports.normalize = function(path) {
             var isAbsolute = exports.isAbsolute(path),
                 trailingSlash = shims.substr(path, -1) === '/';
 
             // Normalize the path
-            path = normalizeArray(shims.filter(path.split('/'), function (p) {
+            path = normalizeArray(shims.filter(path.split('/'), function(p) {
                 return !!p;
             }), !isAbsolute).join('/');
 
@@ -371,14 +348,14 @@
         };
 
 // posix version
-        exports.isAbsolute = function (path) {
+        exports.isAbsolute = function(path) {
             return path.charAt(0) === '/';
         };
 
 // posix version
-        exports.join = function () {
+        exports.join = function() {
             var paths = Array.prototype.slice.call(arguments, 0);
-            return exports.normalize(shims.filter(paths, function (p, index) {
+            return exports.normalize(shims.filter(paths, function(p, index) {
                 if (!util.isString(p)) {
                     throw new TypeError('Arguments to path.join must be strings');
                 }
@@ -389,7 +366,7 @@
 
 // path.relative(from, to)
 // posix version
-        exports.relative = function (from, to) {
+        exports.relative = function(from, to) {
             from = exports.resolve(from).substr(1);
             to = exports.resolve(to).substr(1);
 
@@ -433,7 +410,7 @@
         exports.sep = '/';
         exports.delimiter = ':';
 
-        exports.dirname = function (path) {
+        exports.dirname = function(path) {
             var result = splitPath(path),
                 root = result[0],
                 dir = result[1];
@@ -452,7 +429,7 @@
         };
 
 
-        exports.basename = function (path, ext) {
+        exports.basename = function(path, ext) {
             var f = splitPath(path)[2];
             // TODO: make this comparison case-insensitive on windows?
             if (ext && f.substr(-1 * ext.length) === ext) {
@@ -462,11 +439,11 @@
         };
 
 
-        exports.extname = function (path) {
+        exports.extname = function(path) {
             return splitPath(path)[3];
         };
 
-    }, {"__browserify_process": 5, "_shims": 1, "util": 4}], 4: [function (require, module, exports) {
+    },{"__browserify_process":5,"_shims":1,"util":4}],4:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -491,7 +468,7 @@
         var shims = require('_shims');
 
         var formatRegExp = /%[sdj%]/g;
-        exports.format = function (f) {
+        exports.format = function(f) {
             if (!isString(f)) {
                 var objects = [];
                 for (var i = 0; i < arguments.length; i++) {
@@ -503,14 +480,12 @@
             var i = 1;
             var args = arguments;
             var len = args.length;
-            var str = String(f).replace(formatRegExp, function (x) {
+            var str = String(f).replace(formatRegExp, function(x) {
                 if (x === '%%') return '%';
                 if (i >= len) return x;
                 switch (x) {
-                    case '%s':
-                        return String(args[i++]);
-                    case '%d':
-                        return Number(args[i++]);
+                    case '%s': return String(args[i++]);
+                    case '%d': return Number(args[i++]);
                     case '%j':
                         try {
                             return JSON.stringify(args[i++]);
@@ -538,7 +513,6 @@
          * @param {Object} obj The object to print out.
          * @param {Object} opts Optional options object that alters the output.
          */
-
         /* legacy: obj, showHidden, depth, colors*/
         function inspect(obj, opts) {
             // default options
@@ -564,25 +538,24 @@
             if (ctx.colors) ctx.stylize = stylizeWithColor;
             return formatValue(ctx, obj, ctx.depth);
         }
-
         exports.inspect = inspect;
 
 
 // http://en.wikipedia.org/wiki/ANSI_escape_code#graphics
         inspect.colors = {
-            'bold': [1, 22],
-            'italic': [3, 23],
-            'underline': [4, 24],
-            'inverse': [7, 27],
-            'white': [37, 39],
-            'grey': [90, 39],
-            'black': [30, 39],
-            'blue': [34, 39],
-            'cyan': [36, 39],
-            'green': [32, 39],
-            'magenta': [35, 39],
-            'red': [31, 39],
-            'yellow': [33, 39]
+            'bold' : [1, 22],
+            'italic' : [3, 23],
+            'underline' : [4, 24],
+            'inverse' : [7, 27],
+            'white' : [37, 39],
+            'grey' : [90, 39],
+            'black' : [30, 39],
+            'blue' : [34, 39],
+            'cyan' : [36, 39],
+            'green' : [32, 39],
+            'magenta' : [35, 39],
+            'red' : [31, 39],
+            'yellow' : [33, 39]
         };
 
 // Don't use 'blue' not visible on cmd.exe
@@ -619,7 +592,7 @@
         function arrayToHash(array) {
             var hash = {};
 
-            shims.forEach(array, function (val, idx) {
+            shims.forEach(array, function(val, idx) {
                 hash[val] = true;
             });
 
@@ -722,7 +695,7 @@
             if (array) {
                 output = formatArray(ctx, value, recurseTimes, visibleKeys, keys);
             } else {
-                output = keys.map(function (key) {
+                output = keys.map(function(key) {
                     return formatProperty(ctx, value, recurseTimes, visibleKeys, key, array);
                 });
             }
@@ -768,7 +741,7 @@
                 }
             }
 
-            shims.forEach(keys, function (key) {
+            shims.forEach(keys, function(key) {
                 if (!key.match(/^\d+$/)) {
                     output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
                         key, true));
@@ -780,7 +753,7 @@
 
         function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
             var name, str, desc;
-            desc = shims.getOwnPropertyDescriptor(value, key) || {value: value[key]};
+            desc = shims.getOwnPropertyDescriptor(value, key) || { value: value[key] };
             if (desc.get) {
                 if (desc.set) {
                     str = ctx.stylize('[Getter/Setter]', 'special');
@@ -805,11 +778,11 @@
                     }
                     if (str.indexOf('\n') > -1) {
                         if (array) {
-                            str = str.split('\n').map(function (line) {
+                            str = str.split('\n').map(function(line) {
                                 return '  ' + line;
                             }).join('\n').substr(2);
                         } else {
-                            str = '\n' + str.split('\n').map(function (line) {
+                            str = '\n' + str.split('\n').map(function(line) {
                                 return '   ' + line;
                             }).join('\n');
                         }
@@ -840,7 +813,7 @@
 
         function reduceToSingleString(output, base, braces) {
             var numLinesEst = 0;
-            var length = shims.reduce(output, function (prev, cur) {
+            var length = shims.reduce(output, function(prev, cur) {
                 numLinesEst++;
                 if (cur.indexOf('\n') >= 0) numLinesEst++;
                 return prev + cur.replace(/\u001b\[\d\d?m/g, '').length + 1;
@@ -864,79 +837,66 @@
         function isArray(ar) {
             return shims.isArray(ar);
         }
-
         exports.isArray = isArray;
 
         function isBoolean(arg) {
             return typeof arg === 'boolean';
         }
-
         exports.isBoolean = isBoolean;
 
         function isNull(arg) {
             return arg === null;
         }
-
         exports.isNull = isNull;
 
         function isNullOrUndefined(arg) {
             return arg == null;
         }
-
         exports.isNullOrUndefined = isNullOrUndefined;
 
         function isNumber(arg) {
             return typeof arg === 'number';
         }
-
         exports.isNumber = isNumber;
 
         function isString(arg) {
             return typeof arg === 'string';
         }
-
         exports.isString = isString;
 
         function isSymbol(arg) {
             return typeof arg === 'symbol';
         }
-
         exports.isSymbol = isSymbol;
 
         function isUndefined(arg) {
             return arg === void 0;
         }
-
         exports.isUndefined = isUndefined;
 
         function isRegExp(re) {
             return isObject(re) && objectToString(re) === '[object RegExp]';
         }
-
         exports.isRegExp = isRegExp;
 
         function isObject(arg) {
             return typeof arg === 'object' && arg;
         }
-
         exports.isObject = isObject;
 
         function isDate(d) {
             return isObject(d) && objectToString(d) === '[object Date]';
         }
-
         exports.isDate = isDate;
 
         function isError(e) {
             return isObject(e) && objectToString(e) === '[object Error]';
         }
-
         exports.isError = isError;
 
         function isFunction(arg) {
             return typeof arg === 'function';
         }
-
         exports.isFunction = isFunction;
 
         function isPrimitive(arg) {
@@ -947,7 +907,6 @@
                 typeof arg === 'symbol' ||  // ES6 symbol
                 typeof arg === 'undefined';
         }
-
         exports.isPrimitive = isPrimitive;
 
         function isBuffer(arg) {
@@ -957,7 +916,6 @@
                 && typeof arg.binarySlice === 'function'
                 ;
         }
-
         exports.isBuffer = isBuffer;
 
         function objectToString(o) {
@@ -984,7 +942,7 @@
 
 
 // log is just a thin wrapper to console.log that prepends a timestamp
-        exports.log = function () {
+        exports.log = function() {
             console.log('%s - %s', timestamp(), exports.format.apply(exports, arguments));
         };
 
@@ -1002,7 +960,7 @@
          *     prototype.
          * @param {function} superCtor Constructor function to inherit prototype from.
          */
-        exports.inherits = function (ctor, superCtor) {
+        exports.inherits = function(ctor, superCtor) {
             ctor.super_ = superCtor;
             ctor.prototype = shims.create(superCtor.prototype, {
                 constructor: {
@@ -1014,7 +972,7 @@
             });
         };
 
-        exports._extend = function (origin, add) {
+        exports._extend = function(origin, add) {
             // Don't do anything if add isn't an object
             if (!add || !isObject(add)) return origin;
 
@@ -1030,7 +988,7 @@
             return Object.prototype.hasOwnProperty.call(obj, prop);
         }
 
-    }, {"_shims": 1}], 5: [function (require, module, exports) {
+    },{"_shims":1}],5:[function(require,module,exports){
 // shim for using process in browser
 
         var process = module.exports = {};
@@ -1043,9 +1001,7 @@
             ;
 
             if (canSetImmediate) {
-                return function (f) {
-                    return window.setImmediate(f)
-                };
+                return function (f) { return window.setImmediate(f) };
             }
 
             if (canPost) {
@@ -1082,14 +1038,12 @@
         }
 
 // TODO(shtylman)
-        process.cwd = function () {
-            return '/'
-        };
+        process.cwd = function () { return '/' };
         process.chdir = function (dir) {
             throw new Error('process.chdir is not supported');
         };
 
-    }, {}], 6: [function (require, module, exports) {
+    },{}],6:[function(require,module,exports){
 
         /*!
          * EJS
@@ -1131,7 +1085,7 @@
          * @api public
          */
 
-        exports.clearCache = function () {
+        exports.clearCache = function(){
             cache = {};
         };
 
@@ -1144,7 +1098,7 @@
          */
 
         function filtered(js) {
-            return js.substr(1).split('|').reduce(function (js, filter) {
+            return js.substr(1).split('|').reduce(function(js, filter){
                 var parts = filter.split(':')
                     , name = parts.shift()
                     , args = parts.join(':') || '';
@@ -1164,13 +1118,13 @@
          * @api private
          */
 
-        function rethrow(err, str, filename, lineno) {
+        function rethrow(err, str, filename, lineno){
             var lines = str.split('\n')
                 , start = Math.max(lineno - 3, 0)
                 , end = Math.min(lines.length, lineno + 3);
 
             // Error context
-            var context = lines.slice(start, end).map(function (line, i) {
+            var context = lines.slice(start, end).map(function(line, i){
                 var curr = i + start + 1;
                 return (curr == lineno ? ' >> ' : '    ')
                     + curr
@@ -1196,7 +1150,7 @@
          * @api public
          */
 
-        var parse = exports.parse = function (str, options) {
+        var parse = exports.parse = function(str, options){
             var options = options || {}
                 , open = options.open || exports.open || '<%'
                 , close = options.close || exports.close || '%>'
@@ -1239,7 +1193,7 @@
                         , include = null
                         , n = 0;
 
-                    if ('-' == js[js.length - 1]) {
+                    if ('-' == js[js.length-1]){
                         js = js.substring(0, js.length - 2);
                         consumeEOL = true;
                     }
@@ -1249,13 +1203,7 @@
                         if (!filename) throw new Error('filename option is required for includes');
                         var path = resolveInclude(name, filename);
                         include = read(path, 'utf8');
-                        include = exports.parse(include, {
-                            filename: path,
-                            _with: false,
-                            open: open,
-                            close: close,
-                            compileDebug: compileDebug
-                        });
+                        include = exports.parse(include, { filename: path, _with: false, open: open, close: close, compileDebug: compileDebug });
                         buf += "' + (function(){" + include + "})() + '";
                         js = '';
                     }
@@ -1302,7 +1250,7 @@
          * @api public
          */
 
-        var compile = exports.compile = function (str, options) {
+        var compile = exports.compile = function(str, options){
             options = options || {};
             var escape = options.escape || utils.escape;
 
@@ -1344,7 +1292,7 @@
 
             if (client) return fn;
 
-            return function (locals) {
+            return function(locals){
                 return fn.call(this, locals, filters, escape, rethrow);
             }
         };
@@ -1368,7 +1316,7 @@
          * @api public
          */
 
-        exports.render = function (str, options) {
+        exports.render = function(str, options){
             var fn
                 , options = options || {};
 
@@ -1395,7 +1343,7 @@
          * @api public
          */
 
-        exports.renderFile = function (path, options, fn) {
+        exports.renderFile = function(path, options, fn){
             var key = path + ':string';
 
             if ('function' == typeof options) {
@@ -1443,18 +1391,18 @@
         if (require.extensions) {
             require.extensions['.ejs'] = function (module, filename) {
                 filename = filename || module.filename;
-                var options = {filename: filename, client: true}
+                var options = { filename: filename, client: true }
                     , template = fs.readFileSync(filename).toString()
                     , fn = compile(template, options);
                 module._compile('module.exports = ' + fn.toString() + ';', filename);
             };
         } else if (require.registerExtension) {
-            require.registerExtension('.ejs', function (src) {
+            require.registerExtension('.ejs', function(src) {
                 return compile(src, {});
             });
         }
 
-    }, {"./filters": 7, "./utils": 8, "fs": 2, "path": 3}], 7: [function (require, module, exports) {
+    },{"./filters":7,"./utils":8,"fs":2,"path":3}],7:[function(require,module,exports){
         /*!
          * EJS - Filters
          * Copyright(c) 2010 TJ Holowaychuk <tj@vision-media.ca>
@@ -1465,7 +1413,7 @@
          * First element of the target `obj`.
          */
 
-        exports.first = function (obj) {
+        exports.first = function(obj) {
             return obj[0];
         };
 
@@ -1473,7 +1421,7 @@
          * Last element of the target `obj`.
          */
 
-        exports.last = function (obj) {
+        exports.last = function(obj) {
             return obj[obj.length - 1];
         };
 
@@ -1481,7 +1429,7 @@
          * Capitalize the first letter of the target `str`.
          */
 
-        exports.capitalize = function (str) {
+        exports.capitalize = function(str){
             str = String(str);
             return str[0].toUpperCase() + str.substr(1, str.length);
         };
@@ -1490,7 +1438,7 @@
          * Downcase the target `str`.
          */
 
-        exports.downcase = function (str) {
+        exports.downcase = function(str){
             return String(str).toLowerCase();
         };
 
@@ -1498,7 +1446,7 @@
          * Uppercase the target `str`.
          */
 
-        exports.upcase = function (str) {
+        exports.upcase = function(str){
             return String(str).toUpperCase();
         };
 
@@ -1506,7 +1454,7 @@
          * Sort the target `obj`.
          */
 
-        exports.sort = function (obj) {
+        exports.sort = function(obj){
             return Object.create(obj).sort();
         };
 
@@ -1514,8 +1462,8 @@
          * Sort the target `obj` by the given `prop` ascending.
          */
 
-        exports.sort_by = function (obj, prop) {
-            return Object.create(obj).sort(function (a, b) {
+        exports.sort_by = function(obj, prop){
+            return Object.create(obj).sort(function(a, b){
                 a = a[prop], b = b[prop];
                 if (a > b) return 1;
                 if (a < b) return -1;
@@ -1527,7 +1475,7 @@
          * Size or length of the target `obj`.
          */
 
-        exports.size = exports.length = function (obj) {
+        exports.size = exports.length = function(obj) {
             return obj.length;
         };
 
@@ -1535,7 +1483,7 @@
          * Add `a` and `b`.
          */
 
-        exports.plus = function (a, b) {
+        exports.plus = function(a, b){
             return Number(a) + Number(b);
         };
 
@@ -1543,7 +1491,7 @@
          * Subtract `b` from `a`.
          */
 
-        exports.minus = function (a, b) {
+        exports.minus = function(a, b){
             return Number(a) - Number(b);
         };
 
@@ -1551,7 +1499,7 @@
          * Multiply `a` by `b`.
          */
 
-        exports.times = function (a, b) {
+        exports.times = function(a, b){
             return Number(a) * Number(b);
         };
 
@@ -1559,7 +1507,7 @@
          * Divide `a` by `b`.
          */
 
-        exports.divided_by = function (a, b) {
+        exports.divided_by = function(a, b){
             return Number(a) / Number(b);
         };
 
@@ -1567,7 +1515,7 @@
          * Join `obj` with the given `str`.
          */
 
-        exports.join = function (obj, str) {
+        exports.join = function(obj, str){
             return obj.join(str || ', ');
         };
 
@@ -1575,7 +1523,7 @@
          * Truncate `str` to `len`.
          */
 
-        exports.truncate = function (str, len, append) {
+        exports.truncate = function(str, len, append){
             str = String(str);
             if (str.length > len) {
                 str = str.slice(0, len);
@@ -1588,7 +1536,7 @@
          * Truncate `str` to `n` words.
          */
 
-        exports.truncate_words = function (str, n) {
+        exports.truncate_words = function(str, n){
             var str = String(str)
                 , words = str.split(/ +/);
             return words.slice(0, n).join(' ');
@@ -1598,7 +1546,7 @@
          * Replace `pattern` with `substitution` in `str`.
          */
 
-        exports.replace = function (str, pattern, substitution) {
+        exports.replace = function(str, pattern, substitution){
             return String(str).replace(pattern, substitution || '');
         };
 
@@ -1606,7 +1554,7 @@
          * Prepend `val` to `obj`.
          */
 
-        exports.prepend = function (obj, val) {
+        exports.prepend = function(obj, val){
             return Array.isArray(obj)
                 ? [val].concat(obj)
                 : val + obj;
@@ -1616,7 +1564,7 @@
          * Append `val` to `obj`.
          */
 
-        exports.append = function (obj, val) {
+        exports.append = function(obj, val){
             return Array.isArray(obj)
                 ? obj.concat(val)
                 : obj + val;
@@ -1626,8 +1574,8 @@
          * Map the given `prop`.
          */
 
-        exports.map = function (arr, prop) {
-            return arr.map(function (obj) {
+        exports.map = function(arr, prop){
+            return arr.map(function(obj){
                 return obj[prop];
             });
         };
@@ -1636,7 +1584,7 @@
          * Reverse the given `obj`.
          */
 
-        exports.reverse = function (obj) {
+        exports.reverse = function(obj){
             return Array.isArray(obj)
                 ? obj.reverse()
                 : String(obj).split('').reverse().join('');
@@ -1646,18 +1594,18 @@
          * Get `prop` of the given `obj`.
          */
 
-        exports.get = function (obj, prop) {
+        exports.get = function(obj, prop){
             return obj[prop];
         };
 
         /**
          * Packs the given `obj` into json string
          */
-        exports.json = function (obj) {
+        exports.json = function(obj){
             return JSON.stringify(obj);
         };
 
-    }, {}], 8: [function (require, module, exports) {
+    },{}],8:[function(require,module,exports){
 
         /*!
          * EJS
@@ -1673,7 +1621,7 @@
          * @api private
          */
 
-        exports.escape = function (html) {
+        exports.escape = function(html){
             return String(html)
                 .replace(/&(?!#?[a-zA-Z0-9]+;)/g, '&amp;')
                 .replace(/</g, '&lt;')
@@ -1683,7 +1631,7 @@
         };
 
 
-    }, {}], 9: [function (require, module, exports) {
+    },{}],9:[function(require,module,exports){
         'use strict';
 
 
@@ -1693,6 +1641,7 @@
             constants = require('./constants'),
             currency = require('./util/currency'),
             mixin = require('./util/mixin');
+
 
 
         /**
@@ -1706,7 +1655,7 @@
             var data, items, settings, len, i;
 
             this._items = [];
-            this._settings = {bn: constants.BN};
+            this._settings = { bn: constants.BN };
 
             Pubsub.call(this);
             Storage.call(this, name, duration);
@@ -1931,28 +1880,22 @@
             Storage.prototype.destroy.call(this);
 
             this._items = [];
-            this._settings = {bn: constants.BN};
+            this._settings = { bn: constants.BN };
 
             this.fire('destroy');
         };
 
 
+
+
         module.exports = Cart;
 
-    }, {
-        "./constants": 11,
-        "./product": 13,
-        "./util/currency": 15,
-        "./util/mixin": 18,
-        "./util/pubsub": 19,
-        "./util/storage": 20
-    }], 10: [function (require, module, exports) {
+    },{"./constants":11,"./product":13,"./util/currency":15,"./util/mixin":18,"./util/pubsub":19,"./util/storage":20}],10:[function(require,module,exports){
         'use strict';
-
 
         var mixin = require('./util/mixin');
 
-        const csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        var csrf = document.querySelector('meta[name="csrf-token"]').content
 
         var defaults = module.exports = {
 
@@ -1966,7 +1909,74 @@
 
             duration: 30,
 
-            template: '<%var items = cart.items();var settings = cart.settings();var hasItems = !!items.length;var priceFormat = { format: true, currency: cart.settings("currency_code") };var totalFormat = { format: true, showCode: true };%><form method="post" class="<% if (!hasItems) { %>minicart-empty<% } %>" action="<%= config.action %>" target="<%= config.target %>">    <input type="hidden" class="csrf" name="_csrf" value="'+csrf+'">    <button type="button" class="minicart-closer">&times;</button>       <ul>        <% for (var i= 0, idx = i + 1, len = items.length; i < len; i++, idx++) { %>        <li class="minicart-item">            <div class="minicart-details-name">                <a class="minicart-name" href="/product/<%= items[i].get("add") %>"><%= items[i].get("item_name") %></a>                <ul class="minicart-attributes">                    <% if (items[i].get("item_number")) { %>                    <li>                        <%= items[i].get("item_number") %>                        <input type="hidden" name="item_number_<%= idx %>" value="<%= items[i].get("item_number") %>" />                    </li>                    <% } %>                    <% if (items[i].discount()) { %>                    <li>                        <%= config.strings.discount %> <%= items[i].discount(priceFormat) %>                        <input type="hidden" name="discount_amount_<%= idx %>" value="<%= items[i].discount() %>" />                    </li>                    <% } %>                    <% for (var options = items[i].options(), j = 0, len2 = options.length; j < len2; j++) { %>                        <li>                            <%= options[j].key %>: <%= options[j].value %>                            <input type="hidden" name="on<%= j %>_<%= idx %>" value="<%= options[j].key %>" />                            <input type="hidden" name="os<%= j %>_<%= idx %>" value="<%= options[j].value %>" />                        </li>                    <% } %>                </ul>            </div>    <div class="minicart-details-remove">                <button type="button" class="minicart-remove" data-minicart-idx="<%= items[i].get("add") %>">&times;</button>            </div>            <div class="minicart-details-price">                <span class="minicart-price"><%= items[i].total(priceFormat) %></span>            </div>            <input type="hidden" name="Products[<%= idx %>][id]" value="<%= items[i].get("add") %>" />            <input type="hidden" name="Products[<%= idx %>][count]" value="<%= items[i].get("quantity") %>" />            <input type="hidden" name="Products[<%= idx %>][title]" value="<%= items[i].get("item_name") %>" />           <input type="hidden" name="Products[<%= idx %>][img]" value="<%= items[i].get("img") %>" />            <input type="hidden" name="Products[<%= idx %>][amount]" value="<%= items[i].amount() %>" />        </li>        <% } %>    </ul>    <div class="minicart-footer">        <% if (hasItems) { %>            <div class="minicart-subtotal">                <%= config.strings.subtotal %> <%= cart.total(totalFormat) %>            </div>            <button class="minicart-submit" type="submit" data-minicart-alt="<%= config.strings.buttonAlt %>"><%- config.strings.button %></button>        <% } else { %>            <p class="minicart-empty-text"><%= config.strings.empty %></p>        <% } %>    </div>    <input type="hidden" name="cmd" value="_cart" />    <input type="hidden" name="upload" value="1" />    <% for (var key in settings) { %>        <input type="hidden" name="<%= key %>" value="<%= settings[key] %>" />    <% } %></form>',
+            template: '<%var items = cart.items();' +
+                        'var settings = cart.settings();' +
+                        'var hasItems = !!items.length;' +
+                        'var priceFormat = { format: true, currency: cart.settings("currency_code") };' +
+                        'var totalFormat = { format: true, showCode: true };%>' +
+                        '<form method="post" class="<% if (!hasItems) { %>minicart-empty<% } %>" action="<%= config.action %>" target="<%= config.target %>">' +
+                            '<input type="hidden" class="csrf" name="_csrf" value="'+csrf+'">' +
+                            '<button type="button" class="minicart-closer">&times;</button>' +
+                            '<ul>' +
+                                '<% for (var i= 0, idx = i + 1, len = items.length; i < len; i++, idx++) { %>' +
+                                    '<li class="minicart-item">' +
+                                        '<div class="minicart-details-name">' +
+                                            '<a class="minicart-name" href="<%= items[i].get("href") %>"><%= items[i].get("item_name") %></a> ' +
+                                            '<ul class="minicart-attributes">' +
+                                                '<% if (items[i].get("item_number")) { %>' +
+                                                    '<li>' +
+                                                        '<%= items[i].get("item_number") %>' +
+                                                        '<input type="hidden" name="item_number_<%= idx %>" value="<%= items[i].get("item_number") %>" />' +
+                                                    '</li>' +
+                                                '<% } %>' +
+                                                '<% if (items[i].discount()) { %>' +
+                                                    '<li>' +
+                                                        '<%= config.strings.discount %> <%= items[i].discount(priceFormat) %>' +
+                                                        '<input type="hidden" name="discount_amount_<%= idx %>" value="<%= items[i].discount() %>" />' +
+                                                    '</li> ' +
+                                                '<% } %>' +
+                                                '<% for (var options = items[i].options(), j = 0, len2 = options.length; j < len2; j++) { %>' +
+                                                    '<li>' +
+                                                        '<%= options[j].key %>: <%= options[j].value %>' +
+                                                        '<input type="hidden" name="on<%= j %>_<%= idx %>" value="<%= options[j].key %>" />' +
+                                                        '<input type="hidden" name="os<%= j %>_<%= idx %>" value="<%= options[j].value %>" />' +
+                                                    '</li>' +
+                                                '<% } %>' +
+                                            '</ul>' +
+                                        '</div>' +
+                                        '<div class="minicart-details-quantity">' +
+                                            '<input disabled class="minicart-quantity" data-minicart-idx="<%= i %>" name="quantity_<%= idx %>" type="text" pattern="[0-9]*" value="<%= items[i].get("quantity") %>" autocomplete="off" />' +
+                                        '</div>' +
+                                        '<div class="minicart-details-remove">' +
+                                            '<button type="button" class="minicart-remove" data-minicart-idx="<%= i %>">&times;</button>' +
+                                        '</div>' +
+                                        '<div class="minicart-details-price">' +
+                                            '<span class="minicart-price"><%= items[i].total(priceFormat) %></span>' +
+                                        '</div>' +
+                                        '<input type="hidden" name="products[<%= idx %>][id]" value="<%= items[i].get("id") %>" />' +
+                                        '<input type="hidden" name="products[<%= idx %>][title]" value="<%= items[i].get("item_name") %>" />' +
+                                        '<input type="hidden" name="products[<%= idx %>][amount]" value="<%= items[i].amount() * items[i].get("quantity") %>" />' +
+                                        '<input type="hidden" name="products[<%= idx %>][img]" value="<%= items[i].get("img") %>" />' +
+                                        '<input type="hidden" name="products[<%= idx %>][count]" value="<%= items[i].get("quantity") %>" />' +
+                                    '</li>' +
+                                '<% } %>' +
+                            '</ul>' +
+                            '<div class="minicart-footer">' +
+                                '<% if (hasItems) { %>' +
+                                    '<div class="minicart-subtotal">' +
+                                        '<%= config.strings.subtotal %> <%= cart.total(totalFormat) %>' +
+                                    '</div>' +
+                                    '<button class="minicart-submit" type="submit" data-minicart-alt="<%= config.strings.buttonAlt %>"><%- config.strings.button %></button>' +
+                                '<% } else { %>' +
+                                    '<p class="minicart-empty-text"><%= config.strings.empty %></p>' +
+                                '<% } %>' +
+                            '</div>' +
+                            '<input type="hidden" name="cmd" value="_cart" />' +
+                            '<input type="hidden" name="upload" value="1" />' +
+                            '<% for (var key in settings) { %>' +
+                                '<input type="hidden" name="<%= key %>" value="<%= settings[key] %>" />' +
+                            '<% } %>' +
+                        '</form>',
 
             styles: '@keyframes pop-in {    0% { opacity: 0; transform: scale(0.1); }    60% { opacity: 1; transform: scale(1.2); }    100% { transform: scale(1); }}@-webkit-keyframes pop-in {    0% { opacity: 0; -webkit-transform: scale(0.1); }    60% { opacity: 1; -webkit-transform: scale(1.2); }    100% { -webkit-transform: scale(1); }}@-moz-keyframes pop-in {    0% { opacity: 0; -moz-transform: scale(0.1); }    60% { opacity: 1; -moz-transform: scale(1.2); }    100% { -moz-transform: scale(1); }}.minicart-showing #PPMiniCart {    display: block;    transform: translateZ(0);    -webkit-transform: translateZ(0);    -moz-transform: translateZ(0);    animation: pop-in 0.25s;    -webkit-animation: pop-in 0.25s;    -moz-animation: pop-in 0.25s;}#PPMiniCart {    display: none;    position: fixed;    left: 50%;    top: 75px;}#PPMiniCart form {    position: relative;    width: 400px;    max-height: 400px;    margin-left: -200px;    padding: 10px 10px 40px;    background: #fbfbfb;    border: 1px solid #d7d7d7;    border-radius: 4px;    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);    font: 15px/normal arial, helvetica;    color: #333;}#PPMiniCart form.minicart-empty {    padding-bottom: 10px;    font-size: 16px;    font-weight: bold;}#PPMiniCart ul {    clear: both;    float: left;    width: 380px;    margin: 5px 0 20px;    padding: 10px;    list-style-type: none;    background: #fff;    border: 1px solid #ccc;    border-radius: 4px;    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);}#PPMiniCart .minicart-empty ul {    display: none;}#PPMiniCart .minicart-closer {    float: right;    margin: -12px -10px 0;    padding: 10px;    background: 0;    border: 0;    font-size: 18px;    cursor: pointer;    font-weight: bold;}#PPMiniCart .minicart-item {    clear: left;    padding: 6px 0;    min-height: 25px;}#PPMiniCart .minicart-item + .minicart-item {    border-top: 1px solid #f2f2f2;}#PPMiniCart .minicart-item a {    color: #333;    text-decoration: none;}#PPMiniCart .minicart-details-name {    float: left;    width: 62%;}#PPMiniCart .minicart-details-quantity {    float: left;    width: 15%;}#PPMiniCart .minicart-details-remove {    float: left;    width: 7%;}#PPMiniCart .minicart-details-price {    float: left;    width: 16%;    text-align: right;}#PPMiniCart .minicart-attributes {    margin: 0;    padding: 0;    background: transparent;    border: 0;    border-radius: 0;    box-shadow: none;    color: #999;    font-size: 12px;    line-height: 22px;}#PPMiniCart .minicart-attributes li {    display: inline;}#PPMiniCart .minicart-attributes li:after {    content: ",";}#PPMiniCart .minicart-attributes li:last-child:after {    content: "";}#PPMiniCart .minicart-quantity {    width: 30px;    height: 18px;    padding: 2px 4px;    border: 1px solid #ccc;    border-radius: 4px;    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);    font-size: 13px;    text-align: right;    transition: border linear 0.2s, box-shadow linear 0.2s;    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;}#PPMiniCart .minicart-quantity:hover {    border-color: #0078C1;}#PPMiniCart .minicart-quantity:focus {    border-color: #0078C1;    outline: 0;    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 3px rgba(0, 120, 193, 0.4);}#PPMiniCart .minicart-remove {    width: 18px;    height: 19px;    margin: 2px 0 0;    padding: 0;    background: #b7b7b7;    border: 1px solid #a3a3a3;    border-radius: 3px;    color: #fff;    font-size: 13px;    opacity: 0.70;    cursor: pointer;}#PPMiniCart .minicart-remove:hover {    opacity: 1;}#PPMiniCart .minicart-footer {    clear: left;}#PPMiniCart .minicart-subtotal {    position: absolute;    bottom: 17px;    padding-left: 6px;    left: 10px;    font-size: 16px;    font-weight: bold;}#PPMiniCart .minicart-submit {    position: absolute;    bottom: 10px;    right: 10px;    min-width: 153px;    height: 33px;    margin-right: 6px;    padding: 0 9px;    border: 1px solid #ffc727;    border-radius: 5px;    color: #000;    text-shadow: 1px 1px 1px #fff6e9;    cursor: pointer;    background: #ffaa00;    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZjZlOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmFhMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);    background: -moz-linear-gradient(top, #fff6e9 0%, #ffaa00 100%);    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff6e9), color-stop(100%,#ffaa00));    background: -webkit-linear-gradient(top, #fff6e9 0%,#ffaa00 100%);    background: -o-linear-gradient(top, #fff6e9 0%,#ffaa00 100%);    background: -ms-linear-gradient(top, #fff6e9 0%,#ffaa00 100%);    background: linear-gradient(to bottom, #fff6e9 0%,#ffaa00 100%);}#PPMiniCart .minicart-submit img {    vertical-align: middle;    padding: 4px 0 0 2px;}',
 
@@ -1990,13 +2000,13 @@
             return mixin(defaults, userConfig);
         };
 
-    }, {"./util/mixin": 18}], 11: [function (require, module, exports) {
+    },{"./util/mixin":18}],11:[function(require,module,exports){
         'use strict';
 
 
         module.exports = {
 
-            COMMANDS: {_cart: true, _xclick: true, _donations: true},
+            COMMANDS: { _cart: true, _xclick: true, _donations: true },
 
             SETTINGS: /^(?:business|currency_code|lc|paymentaction|no_shipping|cn|no_note|invoice|handling_cart|weight_cart|weight_unit|tax_cart|discount_amount_cart|discount_rate_cart|page_style|image_url|cpp_|cs|cbt|return|cancel_return|notify_url|rm|custom|charset)/,
 
@@ -2022,7 +2032,7 @@
 
         };
 
-    }, {}], 12: [function (require, module, exports) {
+    },{}],12:[function(require,module,exports){
         'use strict';
 
 
@@ -2066,6 +2076,8 @@
         };
 
 
+
+
 // Export to either node or the brower window
         if (typeof window === 'undefined') {
             module.exports = minicart;
@@ -2077,7 +2089,7 @@
             window.paypal.minicart = minicart;
         }
 
-    }, {"./cart": 9, "./config": 10, "./view": 22}], 13: [function (require, module, exports) {
+    },{"./cart":9,"./config":10,"./view":22}],13:[function(require,module,exports){
         'use strict';
 
 
@@ -2273,7 +2285,7 @@
             var result;
 
             if (!this._total) {
-                result = this.get('quantity') * this.amount();
+                result  = this.get('quantity') * this.amount();
                 result -= this.discount();
 
                 this._total = parser.amount(result);
@@ -2296,7 +2308,7 @@
                 data = data._data;
             }
 
-            if (this.get('add') === data.add) {
+            if (this.get('item_name') === data.item_name) {
                 if (this.get('item_number') === data.item_number) {
                     if (this.get('amount') === parser.amount(data.amount)) {
                         var i = 0;
@@ -2338,21 +2350,22 @@
         };
 
 
+
+
         module.exports = Product;
 
-    }, {"./util/currency": 15, "./util/mixin": 18, "./util/pubsub": 19}], 14: [function (require, module, exports) {
+    },{"./util/currency":15,"./util/mixin":18,"./util/pubsub":19}],14:[function(require,module,exports){
         /* jshint quotmark:double */
 
 
         "use strict";
 
 
+
         module.exports.add = function add(el, str) {
             var re;
 
-            if (!el) {
-                return false;
-            }
+            if (!el) { return false; }
 
             if (el && el.classList && el.classList.add) {
                 el.classList.add(str);
@@ -2369,9 +2382,7 @@
         module.exports.remove = function remove(el, str) {
             var re;
 
-            if (!el) {
-                return false;
-            }
+            if (!el) { return false; }
 
             if (el.classList && el.classList.add) {
                 el.classList.remove(str);
@@ -2388,9 +2399,7 @@
         module.exports.inject = function inject(el, str) {
             var style;
 
-            if (!el) {
-                return false;
-            }
+            if (!el) { return false; }
 
             if (str) {
                 style = document.createElement("style");
@@ -2406,78 +2415,78 @@
             }
         };
 
-    }, {}], 15: [function (require, module, exports) {
+    },{}],15:[function(require,module,exports){
         'use strict';
 
 
         var currencies = {
-            AED: {before: '\u062c'},
-            ANG: {before: '\u0192'},
-            AMD: {before: '\u058F'},
-            ARS: {before: '$', code: true},
-            AUD: {before: '$', code: true},
-            AWG: {before: '\u0192'},
-            BBD: {before: '$', code: true},
-            BGN: {before: '\u043b\u0432'},
-            BMD: {before: '$', code: true},
-            BND: {before: '$', code: true},
-            BRL: {before: 'R$'},
-            BSD: {before: '$', code: true},
-            CAD: {before: '$', code: true},
-            CHF: {before: '', code: true},
-            CLP: {before: '$', code: true},
-            CNY: {before: '\u00A5'},
-            COP: {before: '$', code: true},
-            CRC: {before: '\u20A1'},
-            CZK: {before: 'Kc'},
-            DKK: {before: 'kr'},
-            DOP: {before: '$', code: true},
-            EEK: {before: 'kr'},
-            EUR: {before: '\u20AC'},
-            GBP: {before: '\u00A3'},
-            GTQ: {before: 'Q'},
-            HKD: {before: '$', code: true},
-            HRK: {before: 'kn'},
-            HUF: {before: 'Ft'},
-            IDR: {before: 'Rp'},
-            ILS: {before: '\u20AA'},
-            INR: {before: 'Rs.'},
-            ISK: {before: 'kr'},
-            JMD: {before: 'J$'},
-            JPY: {before: '\u00A5'},
-            KRW: {before: '\u20A9'},
-            KYD: {before: '$', code: true},
-            LTL: {before: 'Lt'},
-            LVL: {before: 'Ls'},
-            MXN: {before: '$', code: true},
-            MYR: {before: 'RM'},
-            NOK: {before: 'kr'},
-            NZD: {before: '$', code: true},
-            PEN: {before: 'S/'},
-            PHP: {before: 'Php'},
-            PLN: {before: 'z'},
-            QAR: {before: '\ufdfc'},
-            RON: {before: 'lei'},
-            RUB: {before: '\u0440\u0443\u0431'},
-            SAR: {before: '\ufdfc'},
-            SEK: {before: 'kr'},
-            SGD: {before: '$', code: true},
-            THB: {before: '\u0E3F'},
-            TRY: {before: 'TL'},
-            TTD: {before: 'TT$'},
-            TWD: {before: 'NT$'},
-            UAH: {before: '\u20b4'},
-            USD: {before: '$', code: true},
-            UYU: {before: '$U'},
-            VEF: {before: 'Bs'},
-            VND: {before: '\u20ab'},
-            XCD: {before: '$', code: true},
-            ZAR: {before: 'R'}
+            AED: { before: '\u062c' },
+            ANG: { before: '\u0192' },
+            AMD: { before: '\u058F'},
+            ARS: { before: '$', code: true },
+            AUD: { before: '$', code: true },
+            AWG: { before: '\u0192' },
+            BBD: { before: '$', code: true },
+            BGN: { before: '\u043b\u0432' },
+            BMD: { before: '$', code: true },
+            BND: { before: '$', code: true },
+            BRL: { before: 'R$' },
+            BSD: { before: '$', code: true },
+            CAD: { before: '$', code: true },
+            CHF: { before: '', code: true },
+            CLP: { before: '$', code: true },
+            CNY: { before: '\u00A5' },
+            COP: { before: '$', code: true },
+            CRC: { before: '\u20A1' },
+            CZK: { before: 'Kc' },
+            DKK: { before: 'kr' },
+            DOP: { before: '$', code: true },
+            EEK: { before: 'kr' },
+            EUR: { before: '\u20AC' },
+            GBP: { before: '\u00A3' },
+            GTQ: { before: 'Q' },
+            HKD: { before: '$', code: true },
+            HRK: { before: 'kn' },
+            HUF: { before: 'Ft' },
+            IDR: { before: 'Rp' },
+            ILS: { before: '\u20AA' },
+            INR: { before: 'Rs.' },
+            ISK: { before: 'kr' },
+            JMD: { before: 'J$' },
+            JPY: { before: '\u00A5' },
+            KRW: { before: '\u20A9' },
+            KYD: { before: '$', code: true },
+            LTL: { before: 'Lt' },
+            LVL: { before: 'Ls' },
+            MXN: { before: '$', code: true },
+            MYR: { before: 'RM' },
+            NOK: { before: 'kr' },
+            NZD: { before: '$', code: true },
+            PEN: { before: 'S/' },
+            PHP: { before: 'Php' },
+            PLN: { before: 'z' },
+            QAR: { before: '\ufdfc' },
+            RON: { before: 'lei' },
+            RUB: { before: '\u0440\u0443\u0431' },
+            SAR: { before: '\ufdfc' },
+            SEK: { before: 'kr' },
+            SGD: { before: '$', code: true },
+            THB: { before: '\u0E3F' },
+            TRY: { before: 'TL' },
+            TTD: { before: 'TT$' },
+            TWD: { before: 'NT$' },
+            UAH: { before: '\u20b4' },
+            USD: { before: '$', code: true },
+            UYU: { before: '$U' },
+            VEF: { before: 'Bs' },
+            VND: { before: '\u20ab' },
+            XCD: { before: '$', code: true },
+            ZAR: { before: 'R' }
         };
 
 
         module.exports = function currency(amount, config) {
-            var code = config && config.currency || 'AMD',
+            var code = config && config.currency || 'USD',
                 value = currencies[code],
                 before = value.before || '',
                 after = value.after || '',
@@ -2496,7 +2505,7 @@
             return result;
         };
 
-    }, {}], 16: [function (require, module, exports) {
+    },{}],16:[function(require,module,exports){
         'use strict';
 
 
@@ -2510,10 +2519,8 @@
             // NOOP for Node
             if (!document) {
                 return {
-                    add: function () {
-                    },
-                    remove: function () {
-                    }
+                    add: function () {},
+                    remove: function () {}
                 };
                 // Non-IE events
             } else if (document.addEventListener) {
@@ -2529,9 +2536,7 @@
                     add: function (obj, type, fn, scope) {
                         scope = scope || obj;
 
-                        var wrappedFn = function (e) {
-                            fn.call(scope, e);
-                        };
+                        var wrappedFn = function (e) { fn.call(scope, e); };
 
                         obj.addEventListener(type, wrappedFn, false);
                         cache.push([obj, type, fn, wrappedFn]);
@@ -2623,7 +2628,7 @@
 
         })(typeof window === 'undefined' ? null : window, typeof document === 'undefined' ? null : document);
 
-    }, {}], 17: [function (require, module, exports) {
+    },{}],17:[function(require,module,exports){
         'use strict';
 
 
@@ -2665,7 +2670,7 @@
             }
 
         };
-    }, {}], 18: [function (require, module, exports) {
+    },{}],18:[function(require,module,exports){
         'use strict';
 
 
@@ -2689,7 +2694,7 @@
             return dest;
         };
 
-    }, {}], 19: [function (require, module, exports) {
+    },{}],19:[function(require,module,exports){
         'use strict';
 
 
@@ -2741,7 +2746,7 @@
 
         module.exports = Pubsub;
 
-    }, {}], 20: [function (require, module, exports) {
+    },{}],20:[function(require,module,exports){
         'use strict';
 
 
@@ -2799,7 +2804,7 @@
             }
         };
 
-    }, {}], 21: [function (require, module, exports) {
+    },{}],21:[function(require,module,exports){
         'use strict';
 
 
@@ -2818,7 +2823,7 @@
             };
         }
 
-    }, {"ejs": 6}], 22: [function (require, module, exports) {
+    },{"ejs":6}],22:[function(require,module,exports){
         'use strict';
 
 
@@ -2829,6 +2834,7 @@
             css = require('./util/css'),
             viewevents = require('./viewevents'),
             constants = require('./constants');
+
 
 
         /**
@@ -2976,17 +2982,11 @@
         };
 
 
+
+
         module.exports = View;
 
-    }, {
-        "./config": 10,
-        "./constants": 11,
-        "./util/css": 14,
-        "./util/events": 16,
-        "./util/forms": 17,
-        "./util/template": 21,
-        "./viewevents": 23
-    }], 23: [function (require, module, exports) {
+    },{"./config":10,"./constants":11,"./util/css":14,"./util/events":16,"./util/forms":17,"./util/template":21,"./viewevents":23}],23:[function(require,module,exports){
         'use strict';
 
 
@@ -3084,5 +3084,5 @@
 
         };
 
-    }, {"./constants": 11, "./util/events": 16}]
-}, {}, [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]);
+    },{"./constants":11,"./util/events":16}]},{},[9,10,11,12,13,14,15,16,17,18,19,20,21,22,23])
+;

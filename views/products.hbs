@@ -32,17 +32,19 @@
                                                 <form action="#" method="post">
                                                     <fieldset>
                                                         <input type="hidden" name="cmd" value="_cart" />
-                                                        <input type="hidden" name="add" value="{{_id}}" />
-                                                        <input type="hidden" name="quantity" id="quantity" value="1"/>
+                                                        <input type="hidden" name="add" value="1" />
                                                         <input type="hidden" name="business" value=" " />
+                                                        <input type="hidden" name="id" value="{{_id}}" />
                                                         <input type="hidden" name="item_name" value="{{title}}" />
-                                                        <input type="hidden" name="img" value="{{img}}"/>
+                                                        <input type="hidden" name="img" value="{{img}}" />
+                                                        <input type="hidden" name="href" value="/product/{{_id}}" />
+                                                        <input type="hidden" name="quantity" value="1" />
                                                         <input type="hidden" name="amount" value="{{#if is_sale}}{{new_price}}{{else}}{{price}}{{/if}}" />
                                                         <input type="hidden" name="discount_amount" value="" />
                                                         <input type="hidden" name="currency_code" value="AMD" />
                                                         <input type="hidden" name="return" value=" " />
                                                         <input type="hidden" name="cancel_return" value=" " />
-                                                        <input type="submit" name="submit" value="Ավելացնել" class="button" />
+                                                        <input type="submit" name="submit" value="Add to cart" class="button" />
                                                     </fieldset>
                                                 </form>
                                             </div>

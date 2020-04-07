@@ -5,7 +5,7 @@ const router = new Router()
 
 router.get('/', (req, res) => {
     if (req.session.isAuth) {
-        return res.redirect('/admin')
+        return res.redirect('/admin/orders')
     }
 
     return res.render('admin/login', {
@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
                         throw err
                     }
 
-                    res.redirect('/admin')
+                    res.redirect('/admin/orders')
                 })
             } else {
                 res.redirect('/admin/login')

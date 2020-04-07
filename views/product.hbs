@@ -34,30 +34,32 @@
                     {{/if}}
                     <input id="count" class="count" type="number" value="1">
                     =
-                    <input id="price" class="price" type="number" {{#if product.sale_type}}disabled{{/if}}
+                    <input id="price" class="price" type="number" disabled
                            value="{{#if product.is_sale}}{{product.new_price}}{{else}}{{product.price}}{{/if}}">
                     <label for="price"> ։դրամ</label>
                 </div>
                 <div class="snipcart-details agileinfo_single_right_details">
                     <form action="#" method="post">
                         <fieldset>
-                            <input type="hidden" name="cmd" value="_cart"/>
-                            <input type="hidden" name="add" value="{{product._id}}" />
-                            <input type="hidden" name="quantity" id="quantity" value="1"/>
-                            <input type="hidden" name="business" value=" "/>
-                            <input type="hidden" name="item_name" value="{{product.title}}"/>
-                            <input type="hidden" name="img" value="{{product.img}}"/>
-                            <input type="hidden" name="amount" id="amount" value="{{#if product.is_sale}}{{product.new_price}}{{else}}{{product.price}}{{/if}}"/>
-                            <input type="hidden" name="discount_amount" value=""/>
-                            <input type="hidden" name="currency_code" value="AMD"/>
-                            <input type="hidden" name="return" value=" "/>
-                            <input type="hidden" name="cancel_return" value=" "/>
-                            <input type="submit" name="submit" value="Ավելացնել" class="button"/>
+                            <input type="hidden" name="cmd" value="_cart" />
+                            <input type="hidden" name="add" value="1" />
+                            <input type="hidden" name="business" value=" " />
+                            <input type="hidden" name="id" value="{{product._id}}" />
+                            <input type="hidden" name="item_name" value="{{product.title}}" />
+                            <input type="hidden" name="img" value="{{product.img}}" />
+                            <input type="hidden" name="href" value="/product/{{product._id}}" />
+                            <input type="hidden" name="quantity" value="1" />
+                            <input type="hidden" name="amount" value="{{#if product.is_sale}}{{product.new_price}}{{else}}{{product.price}}{{/if}}" />
+                            <input type="hidden" name="discount_amount" value="" />
+                            <input type="hidden" name="currency_code" value="AMD" />
+                            <input type="hidden" name="return" value=" " />
+                            <input type="hidden" name="cancel_return" value=" " />
+                            <input type="submit" name="submit" value="Add to cart" class="button" />
                         </fieldset>
                     </form>
                 </div>
                 <input type="hidden" id="sale-type" value="{{product.sale_type}}">
-                <input type="hidden" id="total-count" value="{{product.count}}">
+                <input type="hidden" id="max-count" value="{{product.count}}">
                 <input type="hidden" id="base-price" value="{{#if product.is_sale}}{{product.new_price}}{{else}}{{product.price}}{{/if}}">
             </div>
         </div>
