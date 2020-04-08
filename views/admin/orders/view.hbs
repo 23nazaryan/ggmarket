@@ -60,14 +60,14 @@
                         <br>
                         <div class="row">
                             {{#ifEquals order.status 0 2}}
-                                <a href="/admin/orders/confirm/{{order.id}}" class="btn btn-success">Հաստատել</a>
+                                <a href="/admin/confirm/{{order.id}}" class="btn btn-success">Հաստատել</a>
                                 &nbsp;&nbsp;&nbsp;
                             {{/ifEquals}}
                             {{#ifEquals order.status 0 1}}
-                                <a href="/admin/orders/cancel/{{order.id}}" class="btn btn-warning">Չեղարկել</a>
+                                <a href="/admin/cancel/{{order.id}}" class="btn btn-warning">Չեղարկել</a>
                                 &nbsp;&nbsp;&nbsp;
                             {{/ifEquals}}
-                            <a href="/admin/orders/delete/{{order.id}}" class="btn btn-danger">Ձնջել</a>
+                            <a href="/admin/delete/{{order.id}}" class="btn btn-danger">Ձնջել</a>
                         </div>
                     </div>
                 </div>

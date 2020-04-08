@@ -22,7 +22,7 @@ router.get('/view/:id', async (req, res) => {
     try {
         const order = await Order.findById(req.params.id)
         const status = (order.status) ? (order.status === 1) ? 'Հաստատված' : 'Չեղարկված' : 'Նոր'
-        console.log(status)
+
         res.render('admin/orders/view', {
             layout: layout,
             title: 'Պատվեր',
@@ -55,7 +55,7 @@ router.get('/confirm/:id', async (req, res) => {
         order.status = 1
         await order.save()
 
-        res.redirect('/admin/orders/confirmed')
+        res.redirect('/admin/confirmed')
     } catch (e) {
         console.log(e)
     }
@@ -81,7 +81,7 @@ router.get('/cancel/:id', async (req, res) => {
         order.status = 2
         await order.save()
 
-        res.redirect('/admin/orders/cancelled')
+        res.redirect('/admin/cancelled')
     } catch (e) {
         console.log(e)
     }
@@ -92,7 +92,7 @@ router.get('/delete/:id', async (req, res) => {
         const order = await Order.findById(req.params.id)
         order.delete()
 
-        res.redirect('/admin/orders')
+        res.redirect('/admin')
     } catch (e) {
         console.log(e)
     }

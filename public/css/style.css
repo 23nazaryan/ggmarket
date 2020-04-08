@@ -1043,8 +1043,8 @@ button.submit.check_out {
     height: 100%;
     background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .3) 100%);
     background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .3) 100%);
-    -webkit-transform: skewX(-25deg);
-    transform: skewX(-25deg);
+    -webkit-transform: skewX(-10deg);
+    transform: skewX(-10deg);
 }
 
 .hover14 figure:hover::before, .top_brand_left:hover .hover14 figure::before {

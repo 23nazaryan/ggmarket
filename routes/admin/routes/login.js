@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
                         throw err
                     }
 
-                    res.redirect('/admin/orders')
+                    res.redirect('/admin')
                 })
             } else {
                 res.redirect('/admin/login')

@@ -10,7 +10,8 @@ router.get('/', async (req, res) => {
         const about = await About.findOne()
         const categories = await categoryHelper.getCategories()
         const saleProducts = await productHelper.getHotSales()
-        const topCategories = await Category.find({parent_id: {$ne: null}, is_top: 1}).limit(9).sort([['views', 'descending']])
+        //const topCategories = await Category.find({parent_id: {$ne: null}, is_top: 1}).limit(9).sort([['views', 'descending']])
+        const topProducts = await productHelper.getTop()
         const forSliders = await Category.find({for_slider: 1, parent_id: {$ne: null}}).limit(10).sort([['views', 'descending']])
 
         res.render('index', {
@@ -19,7 +20,7 @@ router.get('/', async (req, res) => {
             about,
             categories,
             saleProducts,
-            topCategories,
+            topProducts,
             forSliders,
             error: req.flash('error'),
             success: req.flash('success'),

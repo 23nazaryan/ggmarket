@@ -84,7 +84,7 @@ app.use('/cart', cartRoutes)
 app.use('/order', orderRoutes)
 
 //admin
-app.use('/admin/orders', adminRoutes.orders)
+app.use('/admin', adminRoutes.orders)
 app.use('/admin/login', adminRoutes.login)
 app.use('/admin/categories', adminRoutes.categories)
 app.use('/admin/about', adminRoutes.about)
