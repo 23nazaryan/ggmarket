@@ -13,8 +13,8 @@ const transporter = nodemailer.createTransport({
     port: keys.EMAIL_PORT,
     secure: true,
     auth: {
-        user: keys.EMAIL_AUTH_USER,
-        pass: keys.EMAIL_AUTH_PASS
+        user: keys.EMAIL_FROM,
+        pass: keys.EMAIL_PASS
     }
 });
 
