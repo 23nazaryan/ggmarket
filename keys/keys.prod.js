@@ -6,5 +6,5 @@ module.exports = {
     EMAIL_CONTACT: process.env.EMAIL_CONTACT,
     EMAIL_HOST: process.env.EMAIL_HOST,
     EMAIL_PORT: process.env.EMAIL_PORT,
-    EMAIL_PASS: process.env.EMAIL_AUTH_PASS,
+    EMAIL_PASS: process.env.EMAIL_PASS
 }

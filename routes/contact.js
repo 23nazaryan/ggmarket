@@ -9,12 +9,12 @@ const keys = require('../keys')
 const router = new Router()
 
 const transporter = nodemailer.createTransport({
-    host: 'smtp.mail.ru',
-    port: 465,
+    host: keys.EMAIL_HOST,
+    port: keys.EMAIL_PORT,
     secure: true,
     auth: {
-        user: 'vahe000@inbox.ru',
-        pass: '1f8d2ea4d9'
+        user: keys.EMAIL_FROM,
+        pass: keys.EMAIL_PASS
     }
 });
 

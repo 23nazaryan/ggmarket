@@ -3640,12 +3640,12 @@ input.checkbox:checked:after {
     }
 
     .w3l_banner_nav_right_banner3_btml h4 {
-        font-size: 1.3em;
+        font-size: 1em;
     }
 
     .w3ls_logo_products_left h1 a {
-        font-size: 1.3em;
-        background: url(../images/img-sp.png) no-repeat 43px -3px;
+        font-size: 0.8em;
+        background: url(../images/img-sp.png) no-repeat 116px -5px;
         height: 88px;
     }
 
@@ -3890,9 +3890,9 @@ input.checkbox:checked:after {
     }
 
     .w3ls_logo_products_left h1 a {
-        font-size: 1.2em;
-        background: url(../images/img-sp.png) no-repeat 38px -9px;
-        height: 83px;
+        font-size: 0.8em;
+        background: url(../images/img-sp.png) no-repeat 116px -5px;
+        height: 84px;
     }
 
     .w3ls_logo_products_left1 ul.phone_email li {
@@ -4292,12 +4292,6 @@ input.checkbox:checked:after {
         padding: .75em 1em;
     }
 
-    .w3ls_logo_products_left h1 a {
-        font-size: 1em;
-        background: url(../images/img-sp.png) no-repeat 28px -17px;
-        height: 74px;
-    }
-
     .w3ls_logo_products_left1 {
         margin-top: 1.6em;
     }
@@ -4432,12 +4426,6 @@ input.checkbox:checked:after {
 
     .w3ls_logo_products_left1 {
         float: right;
-    }
-
-    .w3ls_logo_products_left h1 a {
-        font-size: 1.2em;
-        background: url(../images/img-sp.png) no-repeat 38px -8px;
-        height: 85px;
     }
 
     ul.dropdown-menu.drp-mnu {
@@ -4918,12 +4906,6 @@ input.checkbox:checked:after {
         font-size: 0.8em;
     }
 
-    .w3ls_logo_products_left h1 a {
-        font-size: 1em;
-        background: url(../images/img-sp.png) no-repeat 28px -18px;
-        height: 75px;
-    }
-
     .w3ls_logo_products_left1 ul.special_items li i {
         padding: 0 0.5em;
     }
@@ -5276,6 +5258,12 @@ input.checkbox:checked:after {
 
     .w3ls_logo_products_left1:nth-child(3) {
         margin: 0.5em 0 1em;
+    }
+
+    .w3ls_logo_products_left h1 a {
+        font-size: 0.8em;
+        background: url(../images/img-sp.png) no-repeat 18px 26px;
+        height: 117px;
     }
 
     .more a {
