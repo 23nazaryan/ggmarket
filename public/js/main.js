@@ -19,6 +19,15 @@ if (countInput) {
     })
 }
 
+const typeSelect = document.querySelector('select[name="types"')
+
+if (typeSelect) {
+    typeSelect.addEventListener('change', event => {
+        document.querySelector('input[name="type"]').value = event.currentTarget.value
+        document.querySelector('input[name="typeId"]').value = event.target.options[event.target.selectedIndex].id
+    })
+}
+
 const deleteButtons = document.querySelectorAll('.delete')
 
 if (deleteButtons) {

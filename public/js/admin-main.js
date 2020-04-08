@@ -2,12 +2,20 @@ const $select = document.querySelector('.category-select')
 
 if ($select) {
     const id = $select.dataset.id
-    console.log(id)
     const option = document.getElementById(id)
 
     if (option) {
         option.setAttribute('selected', 1)
     }
+}
+
+const $categorySelect = document.getElementById('products-category')
+
+if ($categorySelect) {
+    $categorySelect.addEventListener('change', event => {
+        const id =event.currentTarget.value
+        window.location.href = '/admin/products/category/'+id
+    })
 }
 
 const $form = document.querySelector('form')
@@ -35,6 +43,30 @@ if ($form) {
                     }
                 }
             }
+        }
+    })
+}
+
+const addType = document.querySelector('.add-type')
+
+if (addType) {
+    addType.addEventListener('click', event => {
+        const type = document.querySelector('.add-input').value
+
+        if (type) {
+            const types = document.querySelector('.added-types')
+            const innerInput = types.lastChild
+            let idx = parseInt(innerInput.value ? innerInput.dataset.idx : 0) + 1
+            const input = document.createElement('input')
+
+            input.type = 'text'
+            input.className = 'form-control'
+            input.name = 'types'
+            input.value = type
+            input.dataset.idx = idx
+            input.style.marginBottom = '15px'
+            types.appendChild(input)
+            document.querySelector('.add-input').value = ''
         }
     })
 }

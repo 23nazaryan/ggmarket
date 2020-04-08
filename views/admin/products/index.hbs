@@ -5,6 +5,14 @@
                 <table class="table table-striped table-advance table-hover">
                     <h4><i class="fa fa-angle-right"></i> {{title}}</h4>
                     <a class="btn btn-success" style="margin-left: 20px;" href="/admin/products/create">Ավելացնել</a>
+                    <div class="col-sm-3">
+                        <select class="form-control category-select" id="products-category" data-id="{{categoryId}}">
+                            <option value="0">Բոլոր</option>
+                            {{#each categories}}
+                                <option id="{{_id}}" value="{{_id}}">{{title}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
                     <hr>
                     <thead>
                     <tr>

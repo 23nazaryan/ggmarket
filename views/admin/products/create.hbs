@@ -64,6 +64,24 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="types" class="control-label col-lg-2">Տեսակներ</label>
+                            <div class="col-sm-2 types" style="padding: 10px; border: 5px solid #337ab7; border-radius: 10px;">
+                                <input class="form-control add-input" type="text" value=""/>
+
+                                <div class="added-types" style="margin-top: 30px;">
+                                    {{#if product.types}}
+                                        {{#each product.types}}
+                                            <input class="form-control" id="types" name="types" type="text" value="{{this}}" data-idx="{{@key}}" style="margin-bottom: 15px;"/>
+                                        {{/each}}
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <a class="btn btn-primary add-type">Ավելացնել</a>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="count" class="control-label col-lg-2">Քանակ</label>
                             <div class="col-lg-5">
                                 <input class="form-control" id="count" name="count" min="0" type="number" value="{{product.count}}"/>

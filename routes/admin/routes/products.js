@@ -9,6 +9,7 @@ const layout = 'admin.main.hbs'
 
 router.get('/index/:type?', auth, async (req, res) => {
     try {
+        const categories = await Category.find({parent_id: {$ne: null}})
         let products
 
         if (req.params.type) {
@@ -21,6 +22,32 @@ router.get('/index/:type?', auth, async (req, res) => {
             layout: layout,
             title: 'Ապրանքներ',
             isProducts: true,
+            categories,
+            categoryId: req.params.id,
+            products
+        })
+    } catch (e) {
+        console.log(e)
+    }
+})
+
+router.get('/category/:id', auth, async (req, res) => {
+    try {
+        const categories = await Category.find({parent_id: {$ne: null}})
+        let products
+
+        if (req.params.id == 0) {
+            products = await Product.find()
+        } else {
+            products = await Product.find({category_id: req.params.id})
+        }
+
+        res.render('admin/products/index', {
+            layout: layout,
+            title: 'Ապրանքներ',
+            isProducts: true,
+            categories,
+            categoryId: req.params.id,
             products
         })
     } catch (e) {
@@ -114,6 +141,7 @@ router.post('/edit/:id', auth, async (req, res) => {
         const is_sale = req.body.is_sale || 0
         product.is_top = is_top
         product.is_sale = is_sale
+        product.types = req.body.types ? req.body.types.filter(Boolean) : null
         product.img = imageName
         await product.save()
 

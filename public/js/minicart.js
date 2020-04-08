@@ -1955,6 +1955,12 @@
                                         '</div>' +
                                         '<input type="hidden" name="products[<%= idx %>][id]" value="<%= items[i].get("id") %>" />' +
                                         '<input type="hidden" name="products[<%= idx %>][title]" value="<%= items[i].get("item_name") %>" />' +
+
+                                        '<% if (items[i].get("type")) { %>' +
+                                            '<input type="hidden" name="products[<%= idx %>][type]" value="<%= items[i].get("type") %>" />' +
+                                            '<input type="hidden" name="products[<%= idx %>][typeId]" value="<%= items[i].get("typeId") %>" />' +
+                                        '<% } %>' +
+
                                         '<input type="hidden" name="products[<%= idx %>][amount]" value="<%= items[i].amount() * items[i].get("quantity") %>" />' +
                                         '<input type="hidden" name="products[<%= idx %>][img]" value="<%= items[i].get("img") %>" />' +
                                         '<input type="hidden" name="products[<%= idx %>][count]" value="<%= items[i].get("quantity") %>" />' +
@@ -2311,17 +2317,34 @@
             if (this.get('item_name') === data.item_name) {
                 if (this.get('item_number') === data.item_number) {
                     if (this.get('amount') === parser.amount(data.amount)) {
-                        var i = 0;
+                        if (this.get('typeId') && data.typeId) {
+                            if (this.get('typeId') === data.typeId) {
+                                var i = 0;
 
-                        match = true;
+                                match = true;
 
-                        while (typeof data['os' + i] !== 'undefined') {
-                            if (this.get('os' + i) !== data['os' + i]) {
-                                match = false;
-                                break;
+                                while (typeof data['os' + i] !== 'undefined') {
+                                    if (this.get('os' + i) !== data['os' + i]) {
+                                        match = false;
+                                        break;
+                                    }
+
+                                    i++;
+                                }
                             }
+                        } else {
+                            var i = 0;
 
-                            i++;
+                            match = true;
+
+                            while (typeof data['os' + i] !== 'undefined') {
+                                if (this.get('os' + i) !== data['os' + i]) {
+                                    match = false;
+                                    break;
+                                }
+
+                                i++;
+                            }
                         }
                     }
                 }

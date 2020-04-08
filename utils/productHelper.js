@@ -4,19 +4,19 @@ const getProducts = async function(p, query)
 {
     const options = {
         page: parseInt(p, 10) || 1,
-        limit: 4
+        limit: 16
     }
     const products = await Product.paginate(query, options)
     const pagination = {
         page: products.page,
         pageCount: products.pages,
-        display: (products.total > 4) ? true : false
+        display: (products.total > 16) ? true : false
     }
 
     return {docs: products.docs, pagination}
 }
 
-const getHotSales = async function(productId = null, limit = 4)
+const getHotSales = async function(productId = null, limit = 8)
 {
     return await Product.find({_id: {$ne: productId}, is_sale: 1}).limit(limit).sort([['views', 'descending']])
 }
