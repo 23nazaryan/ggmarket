@@ -59,14 +59,12 @@
                         <br>
                         <br>
                         <div class="row">
-                            {{#ifEquals order.status 0 2}}
+                            {{#ifEquals  order.status 0}}
                                 <a href="/admin/confirm/{{order.id}}" class="btn btn-success">Հաստատել</a>
                                 &nbsp;&nbsp;&nbsp;
-                            {{/ifEquals}}
-                            {{#ifEquals order.status 0 1}}
                                 <a href="/admin/cancel/{{order.id}}" class="btn btn-warning">Չեղարկել</a>
                                 &nbsp;&nbsp;&nbsp;
-                            {{/ifEquals}}
+                            {{/ifEquals }}
                             <a href="/admin/delete/{{order.id}}" class="btn btn-danger">Ձնջել</a>
                         </div>
                     </div>

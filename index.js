@@ -40,8 +40,8 @@ const hbs = exphbs.create({
             if (v1 && v2) return options.fn(this)
             return options.inverse(this)
         },
-        ifEquals: function (v1, v2, v3, options) {
-            if (v1 === v2 || v1 === v3) return options.fn(this)
+        ifEquals: function (v1, v2, options) {
+            if (v1 === v2) return options.fn(this)
             return options.inverse(this)
         },
         paginate: require('handlebars-paginate')
