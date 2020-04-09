@@ -9,9 +9,10 @@ router.get('/:id', async (req, res) => {
     try {
         const categories = await categoryHelper.getCategories()
         const about = await About.findOne()
-        const product = await Product.findById(req.params.id)
+        const product = await Product.findOne({_id: req.params.id, count: {$ne: 0}})
         const saleProducts = await productHelper.getHotSales(product._id)
         const similar = await productHelper.getSimilar(product.category_id, product._id)
+
         product.views++
         await product.save()
 

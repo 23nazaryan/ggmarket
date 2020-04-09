@@ -10,7 +10,8 @@ router.get('/:id', async (req, res) => {
     try {
         const p = req.query.p
         const query = {
-            category_id: req.params.id
+            category_id: req.params.id,
+            count: {$ne: 0}
         }
         const products = await productHelper.getProducts(p, query)
         const category = await Category.findById(req.params.id)

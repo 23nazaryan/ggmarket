@@ -1,5 +1,6 @@
 const {Router} = require('express')
 const Order = require('../../../models/Order')
+const Product = require('../../../models/Product')
 const auth = require('../../../middleware/auth')
 const router = new Router()
 const layout = 'admin.main.hbs'
@@ -10,6 +11,7 @@ router.get('/', auth, async (req, res) => {
 
         res.render('admin/orders/index', {
             layout: layout,
+            title: 'Նոր պատվերներ',
             isOrders: true,
             orders
         })
@@ -41,6 +43,7 @@ router.get('/confirmed', auth, async (req, res) => {
 
         res.render('admin/orders/index', {
             layout: layout,
+            title: 'Հաստատված',
             isOrders: true,
             orders
         })
@@ -52,6 +55,16 @@ router.get('/confirmed', auth, async (req, res) => {
 router.get('/confirm/:id', async (req, res) => {
     try {
         const order = await Order.findById(req.params.id)
+
+        for (item of order.products) {
+            let product = await Product.findById(item.id)
+
+            if (product) {
+                product.count -= item.count
+                await product.save()
+            }
+        }
+
         order.status = 1
         await order.save()
 
@@ -67,6 +80,7 @@ router.get('/cancelled', auth, async (req, res) => {
 
         res.render('admin/orders/index', {
             layout: layout,
+            title: 'Չեղարկված',
             isOrders: true,
             orders
         })

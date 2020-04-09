@@ -19,7 +19,7 @@
                             <tr class="rem" data-id="{{id}}">
                                 <td class="invert-image">
                                     <a href="/product/{{id}}">
-                                        <img src="/images/products/{{img}}" alt="{{title}}" class="img-responsive" style="width: 150px;">
+                                        <img src="/images/products/{{img}}" alt="{{title}}" class="img-responsive" style="width: 100px;">
                                     </a>
                                 </td>
                                 <td class="invert">
@@ -29,7 +29,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="invert">{{title}}</td>
+                                <td class="invert">{{title}} {{#if type}}({{type}}){{/if}}</td>
                                 <td class="invert">{{amount}}</td>
                                 <td class="invert">
                                     <div class="rem">
@@ -45,7 +45,6 @@
         <div class="checkout-left">
             <div class="col-md-8 address_form_agile">
                 <h4>Լրացրեք Ձեր տվյալները</h4>
-
                 <form action="/order" method="post" class="creditly-card-form agileinfo_form">
                     <input type="hidden" class="csrf" name="_csrf" value="{{csrf}}">
                     <section class="creditly-wrapper wthree, w3_agileits_wrapper">
@@ -70,18 +69,20 @@
                             <button class="submit check_out">Պատվիրել</button>
                         </div>
                     </section>
-                    {{#if products}}
-                        {{#each products}}
-                            <div data-product-id="{{id}}" style="display: none;">
-                                <input type="hidden" name="products[{{@key}}][id]" value="{{id}}" />
-                                <input type="hidden" name="products[{{@key}}][title]" value="{{title}}" />
-                                <input type="hidden" name="products[{{@key}}][img]" value="{{img}}" />
-                                <input type="hidden" name="products[{{@key}}][type]" value="{{type}}" />
-                                <input type="hidden" name="products[{{@key}}][count]" value="{{count}}"/>
-                                <input type="hidden" name="products[{{@key}}][amount]" value="{{amount}}" />
-                            </div>
-                        {{/each}}
-                    {{/if}}
+                    <products>
+                        {{#if products}}
+                            {{#each products}}
+                                <div data-product-id="{{id}}" style="display: none;">
+                                    <input type="hidden" name="products[{{@key}}][id]" value="{{id}}" />
+                                    <input type="hidden" name="products[{{@key}}][title]" value="{{title}}" />
+                                    <input type="hidden" name="products[{{@key}}][img]" value="{{img}}" />
+                                    <input type="hidden" name="products[{{@key}}][type]" value="{{type}}" />
+                                    <input type="hidden" name="products[{{@key}}][count]" value="{{count}}"/>
+                                    <input type="hidden" name="products[{{@key}}][amount]" value="{{amount}}" />
+                                </div>
+                            {{/each}}
+                        {{/if}}
+                    </products>
                 </form>
             </div>
             <div class="clearfix"> </div>

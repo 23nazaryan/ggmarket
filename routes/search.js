@@ -15,7 +15,8 @@ router.post('/', async (req, res) => {
 
         const p = req.query.p
         const query = {
-            keywords: {$regex: search, $options : 'i'}
+            keywords: {$regex: search, $options : 'i'},
+            count: {$ne: 0}
         }
         const products = await productHelper.getProducts(p, query)
         const categories = await categoryHelper.getCategories()

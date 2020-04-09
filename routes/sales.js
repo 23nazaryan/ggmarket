@@ -8,7 +8,8 @@ router.get('/', async (req, res) => {
     try {
         const p = req.query.p
         const query = {
-            is_sale: 1
+            is_sale: 1,
+            count: {$ne: 0}
         }
         const products = await productHelper.getProducts(p, query)
         const categories = await categoryHelper.getCategories()

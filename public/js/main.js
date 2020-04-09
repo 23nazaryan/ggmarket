@@ -2,7 +2,7 @@ const countInput = document.querySelector('input#count')
 
 if (countInput) {
     countInput.addEventListener('change', event => {
-        const maxCount = parseInt(document.getElementById('max-count').value)
+        const maxCount = parseInt(document.querySelector('input[name="maxCount"]').value)
         const basePrice = parseInt(document.getElementById('base-price').value)
         let count = parseInt(event.currentTarget.value)
 
@@ -16,6 +16,14 @@ if (countInput) {
         event.currentTarget.value = count
         document.querySelector('input#price').value = count * basePrice
         document.querySelector('input[name="quantity"]').value = countInput.value
+    })
+}
+
+const minicartQuantity = document.querySelector('.minicart-details-quantity .minicart-quantity')
+
+if (minicartQuantity) {
+    minicartQuantity.addEventListener('click', event => {
+        alert('ok')
     })
 }
 
@@ -38,6 +46,10 @@ if (deleteButtons) {
             const product = document.querySelector('div[data-product-id="'+id+'"]')
             row.style.display = 'none'
             product.remove()
+
+            if (document.querySelectorAll('products div').length === 0) {
+                window.location.href = '/'
+            }
         })
     })
 }

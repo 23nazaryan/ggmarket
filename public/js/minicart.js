@@ -1945,7 +1945,7 @@
                                             '</ul>' +
                                         '</div>' +
                                         '<div class="minicart-details-quantity">' +
-                                            '<input disabled class="minicart-quantity" data-minicart-idx="<%= i %>" name="quantity_<%= idx %>" type="text" pattern="[0-9]*" value="<%= items[i].get("quantity") %>" autocomplete="off" />' +
+                                            '<input class="minicart-quantity" data-minicart-idx="<%= i %>" name="quantity_<%= idx %>" type="text" pattern="[0-9]*" value="<%= items[i].get("quantity") %>" autocomplete="off" />' +
                                         '</div>' +
                                         '<div class="minicart-details-remove">' +
                                             '<button type="button" class="minicart-remove" data-minicart-idx="<%= i %>">&times;</button>' +
@@ -1964,6 +1964,7 @@
                                         '<input type="hidden" name="products[<%= idx %>][amount]" value="<%= items[i].amount() * items[i].get("quantity") %>" />' +
                                         '<input type="hidden" name="products[<%= idx %>][img]" value="<%= items[i].get("img") %>" />' +
                                         '<input type="hidden" name="products[<%= idx %>][count]" value="<%= items[i].get("quantity") %>" />' +
+                                        '<input type="hidden" name="products[<%= idx %>][maxCount]" value="<%= items[i].get("maxCount") %>" />' +
                                     '</li>' +
                                 '<% } %>' +
                             '</ul>' +
@@ -3061,10 +3062,15 @@
                             cart = that.model.cart,
                             product = cart.items(idx),
                             quantity = parseInt(target.value, 10);
+                        const maxCount = parseInt(product._data.maxCount)
 
                         if (product) {
                             if (quantity > 0) {
-                                product.set('quantity', quantity);
+                                if (quantity > maxCount) {
+                                    product.set('quantity', maxCount);
+                                } else {
+                                    product.set('quantity', quantity);
+                                }
                             } else if (quantity === 0) {
                                 cart.remove(idx);
                             }

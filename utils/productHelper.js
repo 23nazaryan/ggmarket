@@ -18,17 +18,17 @@ const getProducts = async function(p, query)
 
 const getHotSales = async function(productId = null, limit = 8)
 {
-    return await Product.find({_id: {$ne: productId}, is_sale: 1}).limit(limit).sort([['views', 'descending']])
+    return await Product.find({_id: {$ne: productId}, is_sale: 1, count: {$ne: 0}}).limit(limit).sort([['views', 'descending']])
 }
 
 const getSimilar = async function(categoryId, productId)
 {
-    return await Product.find({category_id: categoryId, _id: {$ne: productId}}).limit(4).sort([['views', 'descending']])
+    return await Product.find({category_id: categoryId, _id: {$ne: productId}, count: {$ne: 0}}).limit(4).sort([['views', 'descending']])
 }
 
 const getTop = async function()
 {
-    return await Product.find({is_top: 1}).limit(9).sort([['views', 'descending']])
+    return await Product.find({is_top: 1, count: {$ne: 0}}).limit(9).sort([['views', 'descending']])
 }
 
 module.exports.getProducts = getProducts

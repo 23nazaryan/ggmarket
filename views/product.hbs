@@ -23,12 +23,9 @@
                         <h4><strong data-price="{{product.price}}" class="price">{{product.price}}</strong> :դր</h4>
                     {{/if}}
                 </div>
-                <div class="snipcart-thumb agileinfo_single_right_snipcart">
-                    <h4>Առկա է {{product.count}} {{#if product.sale_type}}հատ{{else}}կիլոգրամ{{/if}}</h4>
-                </div>
 
                 {{#if product.types}}
-                    <div class="form-group col-sm-2">
+                    <div class="form-group col-sm-2" style="margin-top: 23px;">
                         <select class="form-control" id="types" name="types" style="margin-left: -14px;">
                             {{#each product.types}}
                                 <option class="type-option" id="{{@key}}" value="{{this}}">{{this}}</option>
@@ -38,7 +35,7 @@
                 {{/if}}
 
                 <div class="clearfix"></div>
-                <div class="form-group">
+                <div class="form-group" style="margin-top: 23px;">
                     {{#if product.sale_type}}
                         <label for="count">Հատ: </label>
                     {{else}}
@@ -65,17 +62,17 @@
                             {{/if}}
                             <input type="hidden" name="href" value="/product/{{product._id}}" />
                             <input type="hidden" name="quantity" value="1" />
+                            <input type="hidden" name="maxCount" value="{{product.count}}">
                             <input type="hidden" name="amount" value="{{#if product.is_sale}}{{product.new_price}}{{else}}{{product.price}}{{/if}}" />
                             <input type="hidden" name="discount_amount" value="" />
                             <input type="hidden" name="currency_code" value="AMD" />
                             <input type="hidden" name="return" value=" " />
                             <input type="hidden" name="cancel_return" value=" " />
-                            <input type="submit" name="submit" value="Ավելացնել" class="button" />
+                            <input type="submit" name="submit" value="Ավելացնել" class="button" style="margin-top: 23px;"/>
                         </fieldset>
                     </form>
                 </div>
                 <input type="hidden" id="sale-type" value="{{product.sale_type}}">
-                <input type="hidden" id="max-count" value="{{product.count}}">
                 <input type="hidden" id="base-price" value="{{#if product.is_sale}}{{product.new_price}}{{else}}{{product.price}}{{/if}}">
             </div>
         </div>
@@ -113,18 +110,21 @@
                                                 <div class="snipcart-details">
                                                     <form action="#" method="post">
                                                         <fieldset>
-                                                            <input type="hidden" name="cmd" value="_cart"/>
-                                                            <input type="hidden" name="add" value="1"/>
-                                                            <input type="hidden" name="business" value=" "/>
-                                                            <input type="hidden" name="item_name"
-                                                                   value="knorr instant soup"/>
-                                                            <input type="hidden" name="amount" value="3.00"/>
-                                                            <input type="hidden" name="discount_amount" value="1.00"/>
-                                                            <input type="hidden" name="currency_code" value="USD"/>
-                                                            <input type="hidden" name="return" value=" "/>
-                                                            <input type="hidden" name="cancel_return" value=" "/>
-                                                            <input type="submit" name="submit" value="Ավելացնել"
-                                                                   class="button"/>
+                                                            <input type="hidden" name="cmd" value="_cart" />
+                                                            <input type="hidden" name="add" value="1" />
+                                                            <input type="hidden" name="business" value=" " />
+                                                            <input type="hidden" name="id" value="{{_id}}" />
+                                                            <input type="hidden" name="item_name" value="{{title}}" />
+                                                            <input type="hidden" name="img" value="{{img}}" />
+                                                            <input type="hidden" name="href" value="/product/{{_id}}" />
+                                                            <input type="hidden" name="quantity" value="1" />
+                                                            <input type="hidden" name="maxCount" value="{{count}}">
+                                                            <input type="hidden" name="amount" value="{{#if is_sale}}{{new_price}}{{else}}{{price}}{{/if}}" />
+                                                            <input type="hidden" name="discount_amount" value="" />
+                                                            <input type="hidden" name="currency_code" value="AMD" />
+                                                            <input type="hidden" name="return" value=" " />
+                                                            <input type="hidden" name="cancel_return" value=" " />
+                                                            <input type="submit" name="submit" value="Ավելացնել" class="button" />
                                                         </fieldset>
                                                     </form>
                                                 </div>
