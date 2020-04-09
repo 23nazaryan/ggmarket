@@ -1,0 +1,59 @@
+<section id="main-content" style="font-size: 18px;">
+    <section class="wrapper">
+        <div class="col-lg-12 mt">
+            <div class="row content-panel">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <div class="invoice-body">
+                        <div class="pull-left">
+                            <address style="font-size: 20px;">
+                                <abbr title="address">Հասցե:</abbr>&nbsp;&nbsp;&nbsp;{{order.address}}
+                                <br>
+                                <abbr title="Phone">Հեռ:</abbr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{order.tel}}
+                            </address>
+                        </div>
+                        <div class="pull-right">
+                            <h2>{{status}}</h2>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div>
+                                    <div class="pull-left"> Ամսաթիվ : {{date}}</div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <br>
+                                <div>
+                                    <div class="pull-left"> Պատվիրվել է : {{order.createdAt}}</div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <br>
+                                <div class="well well-small green" style="margin-bottom: 23px;">
+                                    <div class="pull-left"> Ընհանուր գումար : {{order.amount}} ։դրամ</div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th class="text-left">Անուն</th>
+                                <th class="text-right">Քանակ</th>
+                                <th class="text-right">Գին</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each order.products}}
+                                <tr>
+                                    <td>{{title}} {{#if type}}({{type}}){{/if}}</td>
+                                    <td class="text-right">{{count}}</td>
+                                    <td class="text-right">{{amount}}</td>
+                                </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

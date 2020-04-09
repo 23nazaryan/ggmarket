@@ -3,7 +3,20 @@ const Order = require('../models/Order')
 const {orderValidators} = require('../utils/validators')
 const {validationResult} = require('express-validator/check')
 const validatePhoneNumber = require('validate-phone-number-node-js');
+const nodemailer = require('nodemailer')
+const orderMessage = require('../emails/order')
+const keys = require('../keys')
 const router = new Router()
+
+const transporter = nodemailer.createTransport({
+    host: keys.EMAIL_HOST,
+    port: keys.EMAIL_PORT,
+    secure: true,
+    auth: {
+        user: keys.EMAIL_FROM,
+        pass: keys.EMAIL_PASS
+    }
+});
 
 router.post('/', orderValidators, async (req, res) => {
     try {
@@ -37,6 +50,7 @@ router.post('/', orderValidators, async (req, res) => {
             amount
         })
 
+        transporter.sendMail(orderMessage())
         await order.save()
         req.flash('success', 'Ձեր պատվերը ընդունված է, սպասեք մեր զանգին:')
 

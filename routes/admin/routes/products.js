@@ -95,7 +95,8 @@ router.post('/create', auth, async (req, res) => {
             is_top: is_top || 0,
             keywords,
             category_id,
-            img: imageName
+            img: imageName,
+            types: req.body.types ? req.body.types.filter(Boolean) : null
         })
 
         await product.save()

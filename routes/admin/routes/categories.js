@@ -1,6 +1,7 @@
 const {Router} = require('express')
 const auth = require('../../../middleware/auth')
 const Category = require('../../../models/Category')
+const Product = require('../../../models/Product')
 const random = require('randomstring')
 const image = require('../../../utils/image')
 const router = new Router()
@@ -155,13 +156,28 @@ router.get('/delete/:id/:type?', auth, async (req, res) => {
         const category = await Category.findById(req.params.id)
 
         if (req.params.type) {
-            await image.delete('categories', category.img)
+            const products = await Product.find({category_id: category._id})
+
+            for (p of products) {
+                image.delete('products', p.img)
+                p.delete()
+            }
+
+            image.delete('categories', category.img)
         } else {
             const categories = await Category.find({parent_id: category._id})
-            categories.forEach(async c => {
-                await image.delete('categories', c.img)
+
+            for (c of categories) {
+                const products = await Product.find({category_id: c._id})
+
+                for (p of products) {
+                    image.delete('products', p.img)
+                    p.delete()
+                }
+
+                image.delete('categories', c.img)
                 c.delete()
-            })
+            }
         }
 
         await Category.deleteOne({_id: req.params.id})

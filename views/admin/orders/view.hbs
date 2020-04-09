@@ -66,10 +66,8 @@
                                 &nbsp;&nbsp;&nbsp;
                             {{/ifEquals }}
 
-                            {{#ifEquals  order.status 1}}
-                                <a href="/admin/print/{{order.id}}" id="print-button" class="btn btn-primary">Տպել</a>
-                                &nbsp;&nbsp;&nbsp;
-                            {{/ifEquals }}
+                            <a href="/admin/print/{{order.id}}" class="btn btn-primary">Տպել</a>
+                            &nbsp;&nbsp;&nbsp;
                             <a href="/admin/delete/{{order.id}}" class="btn btn-danger">Ձնջել</a>
                         </div>
                     </div>
