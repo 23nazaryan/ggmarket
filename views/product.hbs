@@ -64,6 +64,7 @@
                             <input type="hidden" name="quantity" value="1" />
                             <input type="hidden" name="maxCount" value="{{product.count}}">
                             <input type="hidden" name="amount" value="{{#if product.is_sale}}{{product.new_price}}{{else}}{{product.price}}{{/if}}" />
+                            <input type="hidden" id="base-price" name="basePrice" value="{{#if product.is_sale}}{{product.new_price}}{{else}}{{product.price}}{{/if}}">
                             <input type="hidden" name="discount_amount" value="" />
                             <input type="hidden" name="currency_code" value="AMD" />
                             <input type="hidden" name="return" value=" " />
@@ -73,7 +74,6 @@
                     </form>
                 </div>
                 <input type="hidden" id="sale-type" value="{{product.sale_type}}">
-                <input type="hidden" id="base-price" value="{{#if product.is_sale}}{{product.new_price}}{{else}}{{product.price}}{{/if}}">
             </div>
         </div>
         <div class="clearfix"></div>
@@ -120,6 +120,7 @@
                                                             <input type="hidden" name="quantity" value="1" />
                                                             <input type="hidden" name="maxCount" value="{{count}}">
                                                             <input type="hidden" name="amount" value="{{#if is_sale}}{{new_price}}{{else}}{{price}}{{/if}}" />
+                                                            <input type="hidden" name="basePrice" value="{{#if is_sale}}{{new_price}}{{else}}{{price}}{{/if}}">
                                                             <input type="hidden" name="discount_amount" value="" />
                                                             <input type="hidden" name="currency_code" value="AMD" />
                                                             <input type="hidden" name="return" value=" " />

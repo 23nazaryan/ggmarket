@@ -8,12 +8,18 @@ router.post('/', async (req, res) => {
         const categories = await categoryHelper.getCategories()
         const about = await About.findOne()
         const products = req.body.products
+        let totalAmount = 0
+
+        for (product of products) {
+            totalAmount += parseInt(product.amount)
+        }
 
         res.render('cart', {
             title: 'Պատվեր',
             isCart: true,
             categories,
             about,
+            totalAmount,
             products
         })
     } catch (e) {

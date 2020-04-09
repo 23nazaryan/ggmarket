@@ -20,7 +20,7 @@ router.get('/', auth, async (req, res) => {
     }
 })
 
-router.get('/view/:id', async (req, res) => {
+router.get('/view/:id', auth, async (req, res) => {
     try {
         const order = await Order.findById(req.params.id)
         const status = (order.status) ? (order.status === 1) ? 'Հաստատված' : 'Չեղարկված' : 'Նոր'
@@ -52,7 +52,7 @@ router.get('/confirmed', auth, async (req, res) => {
     }
 })
 
-router.get('/confirm/:id', async (req, res) => {
+router.get('/confirm/:id', auth, async (req, res) => {
     try {
         const order = await Order.findById(req.params.id)
 
@@ -89,7 +89,7 @@ router.get('/cancelled', auth, async (req, res) => {
     }
 })
 
-router.get('/cancel/:id', async (req, res) => {
+router.get('/cancel/:id', auth, async (req, res) => {
     try {
         const order = await Order.findById(req.params.id)
         order.status = 2
@@ -101,7 +101,7 @@ router.get('/cancel/:id', async (req, res) => {
     }
 })
 
-router.get('/delete/:id', async (req, res) => {
+router.get('/delete/:id', auth, async (req, res) => {
     try {
         const order = await Order.findById(req.params.id)
         order.delete()

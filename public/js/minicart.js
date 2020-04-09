@@ -1962,6 +1962,7 @@
                                         '<% } %>' +
 
                                         '<input type="hidden" name="products[<%= idx %>][amount]" value="<%= items[i].amount() * items[i].get("quantity") %>" />' +
+                                        '<input type="hidden" name="products[<%= idx %>][basePrice]" value="<%= items[i].get("basePrice") %>" />' +
                                         '<input type="hidden" name="products[<%= idx %>][img]" value="<%= items[i].get("img") %>" />' +
                                         '<input type="hidden" name="products[<%= idx %>][count]" value="<%= items[i].get("quantity") %>" />' +
                                         '<input type="hidden" name="products[<%= idx %>][maxCount]" value="<%= items[i].get("maxCount") %>" />' +

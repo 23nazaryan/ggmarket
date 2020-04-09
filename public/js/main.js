@@ -19,20 +19,42 @@ if (countInput) {
     })
 }
 
-const minicartQuantity = document.querySelector('.minicart-details-quantity .minicart-quantity')
-
-if (minicartQuantity) {
-    minicartQuantity.addEventListener('click', event => {
-        alert('ok')
-    })
-}
-
 const typeSelect = document.querySelector('select[name="types"')
 
 if (typeSelect) {
     typeSelect.addEventListener('change', event => {
         document.querySelector('input[name="type"]').value = event.currentTarget.value
         document.querySelector('input[name="typeId"]').value = event.target.options[event.target.selectedIndex].id
+    })
+}
+
+const quantitySelects = document.querySelectorAll('.quantity-select')
+
+if (quantitySelects) {
+    quantitySelects.forEach(select => {
+        select.addEventListener('click', event => {
+            const id = event.currentTarget.getAttribute('data-product-id')
+            const products = document.querySelector('products div[data-product-id="'+id+'"]')
+            const maxCount = parseInt(products.querySelector('input[id="maxCount"]').value)
+            const basePrice = parseInt(products.querySelector('input[id="basePrice"]').value)
+            const entryValue = document.querySelector('div[data-product-id="'+id+'"] div[class="entry value"]')
+            const count = parseInt(entryValue.textContent)
+            const td = document.querySelector('td[data-product-id="'+id+'"]')
+
+            if (event.target.classList.contains('value-plus')) {
+                if ((count + 1) <= maxCount) {
+                    entryValue.textContent = count + 1
+                }
+            } else if (event.target.classList.contains('value-minus')) {
+                if ((count -1) > 0) {
+                    entryValue.textContent = count - 1
+                }
+            }
+
+            td.textContent = entryValue.textContent * basePrice
+            products.querySelector('input[id="count"]').value = entryValue.textContent
+            products.querySelector('input[id="amount"]').value = td.textContent
+        })
     })
 }
 

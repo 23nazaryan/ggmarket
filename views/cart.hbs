@@ -17,21 +17,23 @@
                     {{#if products}}
                         {{#each products}}
                             <tr class="rem" data-id="{{id}}">
-                                <td class="invert-image">
+                                <td class="invert-image" style="width: 25%">
                                     <a href="/product/{{id}}">
-                                        <img src="/images/products/{{img}}" alt="{{title}}" class="img-responsive" style="width: 100px;">
+                                        <img src="/images/products/{{img}}" alt="{{title}}" class="img-responsive">
                                     </a>
                                 </td>
                                 <td class="invert">
                                     <div class="quantity">
-                                        <div class="quantity-select">
+                                        <div class="quantity-select" data-product-id="{{id}}">
+                                            <div class="entry value-minus">-</div>
                                             <div class="entry value">{{count}}</div>
+                                            <div class="entry value-plus">+</div>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="invert">{{title}} {{#if type}}({{type}}){{/if}}</td>
-                                <td class="invert">{{amount}}</td>
-                                <td class="invert">
+                                <td class="invert" style="width: 25%">Lorem ipsum dolor sit amet. {{#if type}}({{type}}){{/if}}</td>
+                                <td class="invert" data-product-id="{{id}}">{{amount}}</td>
+                                <td class="invert" style="width: 5%">
                                     <div class="rem">
                                         <div class="delete" data-id="{{id}}"></div>
                                     </div>
@@ -43,6 +45,12 @@
             </table>
         </div>
         <div class="checkout-left">
+            <div class="col-md-4 checkout-left-basket">
+                <ul>
+                    <li style="color: #1a1a1a; font-size: 23px;">Ընդհանուր <i>-</i> <strong class="total-amount">{{totalAmount}} ։դրամ</strong></li>
+                </ul>
+            </div>
+
             <div class="col-md-8 address_form_agile">
                 <h4>Լրացրեք Ձեր տվյալները</h4>
                 <form action="/order" method="post" class="creditly-card-form agileinfo_form">
@@ -77,8 +85,10 @@
                                     <input type="hidden" name="products[{{@key}}][title]" value="{{title}}" />
                                     <input type="hidden" name="products[{{@key}}][img]" value="{{img}}" />
                                     <input type="hidden" name="products[{{@key}}][type]" value="{{type}}" />
-                                    <input type="hidden" name="products[{{@key}}][count]" value="{{count}}"/>
-                                    <input type="hidden" name="products[{{@key}}][amount]" value="{{amount}}" />
+                                    <input type="hidden" id="count" name="products[{{@key}}][count]" value="{{count}}"/>
+                                    <input type="hidden" id="maxCount" name="products[{{@key}}][maxCount]" value="{{maxCount}}"/>
+                                    <input type="hidden" id="amount" name="products[{{@key}}][amount]" value="{{amount}}" />
+                                    <input type="hidden" id="basePrice" name="products[{{@key}}][basePrice]" value="{{basePrice}}" />
                                 </div>
                             {{/each}}
                         {{/if}}

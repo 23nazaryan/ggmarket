@@ -75,6 +75,7 @@
                                                                 <input type="hidden" name="quantity" value="1" />
                                                                 <input type="hidden" name="maxCount" value="{{count}}">
                                                                 <input type="hidden" name="amount" value="{{#if is_sale}}{{new_price}}{{else}}{{price}}{{/if}}" />
+                                                                <input type="hidden" name="basePrice" value="{{#if is_sale}}{{new_price}}{{else}}{{price}}{{/if}}">
                                                                 <input type="hidden" name="discount_amount" value="" />
                                                                 <input type="hidden" name="currency_code" value="AMD" />
                                                                 <input type="hidden" name="return" value=" " />
