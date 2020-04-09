@@ -37,6 +37,10 @@
                                                         <input type="hidden" name="id" value="{{_id}}" />
                                                         <input type="hidden" name="item_name" value="{{title}}" />
                                                         <input type="hidden" name="img" value="{{img}}" />
+                                                        {{#if types}}
+                                                            <input type="hidden" name="type" value="նշված չէ" />
+                                                            <input type="hidden" name="typeId" value="-1" />
+                                                        {{/if}}
                                                         <input type="hidden" name="href" value="/product/{{_id}}" />
                                                         <input type="hidden" name="quantity" value="1" />
                                                         <input type="hidden" name="maxCount" value="{{count}}">

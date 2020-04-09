@@ -33,13 +33,13 @@ const quantitySelects = document.querySelectorAll('.quantity-select')
 if (quantitySelects) {
     quantitySelects.forEach(select => {
         select.addEventListener('click', event => {
-            const id = event.currentTarget.getAttribute('data-product-id')
-            const products = document.querySelector('products div[data-product-id="'+id+'"]')
+            const id = event.currentTarget.getAttribute('data-id')
+            const products = document.querySelector('products div[data-id="'+id+'"]')
             const maxCount = parseInt(products.querySelector('input[class="maxCount"]').value)
             const basePrice = parseInt(products.querySelector('input[class="basePrice"]').value)
-            const entryValue = document.querySelector('div[data-product-id="'+id+'"] div[class="entry value"]')
+            const entryValue = document.querySelector('div[data-id="'+id+'"] div[class="entry value"]')
             const count = parseInt(entryValue.textContent)
-            const td = document.querySelector('td[data-product-id="'+id+'"]')
+            const td = document.querySelector('td[data-id="'+id+'"]')
 
             if (event.target.classList.contains('value-plus')) {
                 if ((count + 1) <= maxCount) {
@@ -73,10 +73,17 @@ if (deleteButtons) {
     deleteButtons.forEach(button => {
         button.addEventListener('click', event => {
             const id = event.currentTarget.dataset.id
+            const name = event.currentTarget.dataset.name
             const row = document.querySelector('tr[data-id="'+id+'"]')
-            const product = document.querySelector('div[data-product-id="'+id+'"]')
-            row.style.display = 'none'
+            const product = document.querySelector('products div[data-id="'+id+'"]')
+            const amount = parseInt(product.querySelector('input[class="amount"]').value)
+            const totalAmount = parseInt(document.querySelector('.total-amount').textContent)
+            const minicartButton = document.querySelector('.minicart-remove[data-minicart-item_name="'+name+'"]')
+            const idx = minicartButton.getAttribute('data-minicart-idx')
+            paypal.minicart.cart.remove(idx)
+            row.remove()
             product.remove()
+            document.querySelector('.total-amount').textContent = totalAmount - amount
 
             if (document.querySelectorAll('products div').length === 0) {
                 window.location.href = '/'

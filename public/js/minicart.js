@@ -1921,7 +1921,11 @@
                                 '<% for (var i= 0, idx = i + 1, len = items.length; i < len; i++, idx++) { %>' +
                                     '<li class="minicart-item">' +
                                         '<div class="minicart-details-name">' +
-                                            '<a class="minicart-name" href="<%= items[i].get("href") %>"><%= items[i].get("item_name") %></a> ' +
+                                            '<a class="minicart-name" href="<%= items[i].get("href") %>"><%= items[i].get("item_name") %> ' +
+                                            '<% if (items[i].get("type")) { %>' +
+                                                ' (<%= items[i].get("type") %>)' +
+                                            '<% } %>' +
+                                            '</a> ' +
                                             '<ul class="minicart-attributes">' +
                                                 '<% if (items[i].get("item_number")) { %>' +
                                                     '<li>' +
@@ -1948,12 +1952,17 @@
                                             '<input class="minicart-quantity" data-minicart-idx="<%= i %>" name="quantity_<%= idx %>" type="text" pattern="[0-9]*" value="<%= items[i].get("quantity") %>" autocomplete="off" />' +
                                         '</div>' +
                                         '<div class="minicart-details-remove">' +
-                                            '<button type="button" class="minicart-remove" data-minicart-idx="<%= i %>">&times;</button>' +
+                                            '<button type="button" class="minicart-remove" data-minicart-item_name="<%= items[i].get("item_name") %>' +
+                                            '<% if (items[i].get("type")) { %>' +
+                                                ' (<%= items[i].get("type") %>)' +
+                                            '<% } %>' +
+                                            '" data-minicart-idx="<%= i %>">&times;</button>' +
                                         '</div>' +
                                         '<div class="minicart-details-price">' +
                                             '<span class="minicart-price"><%= items[i].total(priceFormat) %></span>' +
                                         '</div>' +
                                         '<input type="hidden" name="products[<%= idx %>][id]" value="<%= items[i].get("id") %>" />' +
+                                        '<input type="hidden" name="products[<%= idx %>][idx]" value="<%= i %>" />' +
                                         '<input type="hidden" name="products[<%= idx %>][title]" value="<%= items[i].get("item_name") %>" />' +
 
                                         '<% if (items[i].get("type")) { %>' +

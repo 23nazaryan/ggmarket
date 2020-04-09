@@ -16,7 +16,7 @@
                 <tbody>
                     {{#if products}}
                         {{#each products}}
-                            <tr class="rem" data-id="{{id}}">
+                            <tr class="rem" data-id="{{idx}}">
                                 <td class="invert-image" style="width: 25%">
                                     <a href="/product/{{id}}">
                                         <img src="/images/products/{{img}}" alt="{{title}}" class="img-responsive">
@@ -24,18 +24,18 @@
                                 </td>
                                 <td class="invert">
                                     <div class="quantity">
-                                        <div class="quantity-select" data-product-id="{{id}}">
+                                        <div class="quantity-select" data-id="{{idx}}">
                                             <div class="entry value-minus">-</div>
                                             <div class="entry value">{{count}}</div>
                                             <div class="entry value-plus">+</div>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="invert" style="width: 25%">Lorem ipsum dolor sit amet. {{#if type}}({{type}}){{/if}}</td>
-                                <td class="invert" data-product-id="{{id}}">{{amount}}</td>
+                                <td class="invert" style="width: 25%">{{title}} {{#if type}}({{type}}){{/if}}</td>
+                                <td class="invert" data-id="{{idx}}">{{amount}}</td>
                                 <td class="invert" style="width: 5%">
                                     <div class="rem">
-                                        <div class="delete" data-id="{{id}}"></div>
+                                        <div class="delete" data-id="{{idx}}" data-name="{{title}}{{#if type}} ({{type}}){{/if}}"></div>
                                     </div>
                                 </td>
                             </tr>
@@ -80,7 +80,7 @@
                     <products>
                         {{#if products}}
                             {{#each products}}
-                                <div data-product-id="{{id}}" style="display: none;">
+                                <div data-id="{{idx}}" style="display: none;">
                                     <input type="hidden" name="products[{{@key}}][id]" value="{{id}}" />
                                     <input type="hidden" name="products[{{@key}}][title]" value="{{title}}" />
                                     <input type="hidden" name="products[{{@key}}][img]" value="{{img}}" />
