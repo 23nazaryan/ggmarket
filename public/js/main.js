@@ -35,8 +35,8 @@ if (quantitySelects) {
         select.addEventListener('click', event => {
             const id = event.currentTarget.getAttribute('data-product-id')
             const products = document.querySelector('products div[data-product-id="'+id+'"]')
-            const maxCount = parseInt(products.querySelector('input[id="maxCount"]').value)
-            const basePrice = parseInt(products.querySelector('input[id="basePrice"]').value)
+            const maxCount = parseInt(products.querySelector('input[class="maxCount"]').value)
+            const basePrice = parseInt(products.querySelector('input[class="basePrice"]').value)
             const entryValue = document.querySelector('div[data-product-id="'+id+'"] div[class="entry value"]')
             const count = parseInt(entryValue.textContent)
             const td = document.querySelector('td[data-product-id="'+id+'"]')
@@ -52,8 +52,17 @@ if (quantitySelects) {
             }
 
             td.textContent = entryValue.textContent * basePrice
-            products.querySelector('input[id="count"]').value = entryValue.textContent
-            products.querySelector('input[id="amount"]').value = td.textContent
+            products.querySelector('input[class="count"]').value = entryValue.textContent
+            products.querySelector('input[class="amount"]').value = td.textContent
+
+            const amountInputs = document.querySelectorAll('input[class="amount"]')
+            let amounts = 0
+
+            amountInputs.forEach(input => {
+                amounts += parseInt(input.value)
+            })
+
+            document.querySelector('.total-amount').textContent = amounts
         })
     })
 }

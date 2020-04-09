@@ -47,7 +47,7 @@
         <div class="checkout-left">
             <div class="col-md-4 checkout-left-basket">
                 <ul>
-                    <li style="color: #1a1a1a; font-size: 23px;">Ընդհանուր <i>-</i> <strong class="total-amount">{{totalAmount}} ։դրամ</strong></li>
+                    <li style="color: #1a1a1a; font-size: 23px;">Ընդհանուր <i>-</i> <strong class="total-amount">{{totalAmount}}</strong> ։դրամ</li>
                 </ul>
             </div>
 
@@ -85,10 +85,10 @@
                                     <input type="hidden" name="products[{{@key}}][title]" value="{{title}}" />
                                     <input type="hidden" name="products[{{@key}}][img]" value="{{img}}" />
                                     <input type="hidden" name="products[{{@key}}][type]" value="{{type}}" />
-                                    <input type="hidden" id="count" name="products[{{@key}}][count]" value="{{count}}"/>
-                                    <input type="hidden" id="maxCount" name="products[{{@key}}][maxCount]" value="{{maxCount}}"/>
-                                    <input type="hidden" id="amount" name="products[{{@key}}][amount]" value="{{amount}}" />
-                                    <input type="hidden" id="basePrice" name="products[{{@key}}][basePrice]" value="{{basePrice}}" />
+                                    <input type="hidden" class="count" name="products[{{@key}}][count]" value="{{count}}"/>
+                                    <input type="hidden" class="maxCount" name="products[{{@key}}][maxCount]" value="{{maxCount}}"/>
+                                    <input type="hidden" class="amount" name="products[{{@key}}][amount]" value="{{amount}}" />
+                                    <input type="hidden" class="basePrice" name="products[{{@key}}][basePrice]" value="{{basePrice}}" />
                                 </div>
                             {{/each}}
                         {{/if}}
