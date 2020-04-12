@@ -1,4 +1,4 @@
-const {body} = require('express-validator/check')
+const {body} = require('express-validator')
 
 exports.contactValidators = [
     body('message', ).isLength({min: 1}).withMessage('Մուտքագրեք նամակ').trim(),
