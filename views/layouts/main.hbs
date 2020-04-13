@@ -19,7 +19,7 @@
             <div class="container">
                 <ul>
                     <li><i class="fa fa-home" aria-hidden="true"></i><a href="/">Գլխավոր էջ</a><span>|</span></li>
-                    <li>{{title}}</li>
+                    <li style="color: white;">{{title}}</li>
                 </ul>
             </div>
         </div>
@@ -135,7 +135,7 @@
     {{/ifAnd}}
 
     {{#ifAnd isContact about.map_url}}
-        <div class="map">
+        <div class="map" style="margin-top: 23px;">
             <iframe src="{{about.map_url}}" style="border:0"></iframe>
         </div>
     {{/ifAnd}}

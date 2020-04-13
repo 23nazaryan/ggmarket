@@ -21,4 +21,10 @@ const getCategories = async function()
     return categories
 }
 
+const forSliders = async function()
+{
+    return await Category.find({for_slider: 1, parent_id: {$ne: null}}).limit(10).sort([['views', 'descending']])
+}
+
 module.exports.getCategories = getCategories
+module.exports.forSliders = forSliders

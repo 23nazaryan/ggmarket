@@ -13,10 +13,12 @@ router.get('/', async (req, res) => {
         }
         const products = await productHelper.getProducts(p, query)
         const categories = await categoryHelper.getCategories()
+        const forSliders = await categoryHelper.forSliders()
         const about = await About.findOne()
 
         res.render('products-sales', {
             title: 'Զեղչված ապրանքներ',
+            forSliders,
             categories,
             products,
             about

@@ -1,18 +1,16 @@
-<div class="w3l_banner_nav_right">
-    <section class="slider">
-        <div class="flexslider">
-            <ul class="slides">
-                {{#each forSliders}}
-                    <li>
-                        <div class="w3l_banner_nav_right_banner" style="--bg-url: url(../images/categories/{{img}})">
-                            <h3>{{title}}</h3>
-                            <div class="more">
-                                <a href="/products/{{_id}}" class="button--saqui button--round-l button--text-thick" data-text="Կատարել պատվերներ">Կատարել պատվերներ</a>
-                            </div>
+<section class="slider">
+    <div class="flexslider">
+        <ul class="slides">
+            {{#each forSliders}}
+                <li>
+                    <div class="w3l_banner_nav_right_banner" style="--bg-url: url(../images/categories/{{img}})">
+                        <h3>{{title}}</h3>
+                        <div class="more">
+                            <a href="/products/{{_id}}" class="button--saqui button--round-l button--text-thick" data-text="Կատարել պատվերներ">Կատարել պատվերներ</a>
                         </div>
-                    </li>
-                {{/each}}
-            </ul>
-        </div>
-    </section>
-</div>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</section>

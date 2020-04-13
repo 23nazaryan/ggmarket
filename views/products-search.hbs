@@ -1,7 +1,5 @@
 <div class="w3l_banner_nav_right">
-    <div class="w3l_banner_nav_right_banner" style="--bg-url: url(../images/search.jpg)">
-        <h3>{{title}}</h3>
-    </div>
+    {{> slider }}
     <div class="w3ls_w3l_banner_nav_right_grid">
         <div class="w3ls_w3l_banner_nav_right_grid1">
             {{#if products.docs}}
@@ -62,7 +60,7 @@
                     </div>
                 {{/each}}
             {{else}}
-                <h2 style="color: red;"><i class="fa fa-search"></i>&nbsp;&nbsp;Ոչինչ չի գտնվել</h2>
+                <h2 style="color: red; text-align: center;"><i class="fa fa-search"></i>&nbsp;&nbsp;Ոչինչ չի գտնվել</h2>
             {{/if}}
             <div class="clearfix"> </div>
         </div>
