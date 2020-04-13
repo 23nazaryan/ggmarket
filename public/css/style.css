@@ -39,7 +39,7 @@ body a:hover {
     width: 100%;
     margin: 0 auto;
     left: 0;
-    z-index: 9999;
+    z-index: 9;
 }
 
 span.glyphicon.glyphicon-shopping-cart.my-cart-icon.my-cart-icon-affix {
@@ -714,7 +714,7 @@ ul.dropdown-menu.drp-mnu li a i {
 
 #PPMiniCart {
     left: 44% !important;
-    z-index: 2;
+    z-index: 10;
 }
 
 .minicart-showing #PPMiniCart form {
@@ -5517,7 +5517,7 @@ input.checkbox:checked:after {
     }
 
     #PPMiniCart form {
-        max-height: 300px;
+        max-height: 400px !important;
         width: 300px !important;
         padding: 10px 10px 40px !important;
     }
