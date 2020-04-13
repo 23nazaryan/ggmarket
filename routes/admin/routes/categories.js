@@ -158,7 +158,7 @@ router.get('/delete/:id/:type?', auth, async (req, res) => {
         if (req.params.type) {
             const products = await Product.find({category_id: category._id})
 
-            for (p of products) {
+            for (let p of products) {
                 image.delete('products', p.img)
                 p.delete()
             }
@@ -167,10 +167,10 @@ router.get('/delete/:id/:type?', auth, async (req, res) => {
         } else {
             const categories = await Category.find({parent_id: category._id})
 
-            for (c of categories) {
+            for (let c of categories) {
                 const products = await Product.find({category_id: c._id})
 
-                for (p of products) {
+                for (let p of products) {
                     image.delete('products', p.img)
                     p.delete()
                 }

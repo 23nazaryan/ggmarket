@@ -739,7 +739,7 @@ ul.dropdown-menu.drp-mnu li a i {
     background: #056a35 !important;
     position: absolute;
     border-radius: 0px !important;
-    color: #000;
+    color: #fff !important;
     text-shadow: none !important;
     cursor: pointer;
 }

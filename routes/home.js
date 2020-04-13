@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
         const categories = await categoryHelper.getCategories()
         const saleProducts = await productHelper.getHotSales()
         const topProducts = await productHelper.getTop()
-        const forSliders = await Category.find({for_slider: 1, parent_id: {$ne: null}}).limit(10).sort([['views', 'descending']])
+        const forSliders = await categoryHelper.forSliders()
 
         res.render('index', {
             title: 'Գլխավոր էջ',

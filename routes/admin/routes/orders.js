@@ -61,7 +61,7 @@ router.get('/confirm/:id', auth, async (req, res) => {
     try {
         const order = await Order.findById(req.params.id)
 
-        for (item of order.products) {
+        for (let item of order.products) {
             let product = await Product.findById(item.id)
 
             if (product) {

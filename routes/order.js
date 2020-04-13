@@ -39,7 +39,7 @@ router.post('/', orderValidators, async (req, res) => {
         const {tel, address, products} = req.body
         let amount = 0
 
-        for (product of products) {
+        for (let product of products) {
             amount += parseInt(product.amount)
         }
 

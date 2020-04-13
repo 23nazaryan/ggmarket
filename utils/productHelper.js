@@ -28,7 +28,7 @@ const getSimilar = async function(categoryId, productId)
 
 const getTop = async function()
 {
-    return await Product.find({is_top: 1, count: {$ne: 0}}).limit(9).sort([['views', 'descending']])
+    return await Product.find({is_top: 1, count: {$ne: 0}}).select(['_id', 'img', 'title']).limit(9).sort([['views', 'descending']])
 }
 
 module.exports.getProducts = getProducts

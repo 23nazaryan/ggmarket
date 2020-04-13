@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
         const products = req.body.products
         let totalAmount = 0
 
-        for (product of products) {
+        for (let product of products) {
             totalAmount += parseInt(product.amount)
         }
 
