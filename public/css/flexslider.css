@@ -95,13 +95,13 @@ html[xmlns] .slides {display: block;}
     background: none;
     cursor: pointer;
     text-indent: -9999px;
-    border:2px solid #84C639;
+    border:2px solid #056a35;
 	border-radius:20px;
 }
 .flex-control-paging li a.flex-active { 
-	background: #84C639;
+	background: #056a35;
     cursor: default;
-    border: 2px solid #84C639;
+    border: 2px solid #056a35;
 }
 .flex-control-thumbs {margin: 5px 0 0; position: static; overflow: hidden;}
 .flex-control-thumbs li {width: 25%; float: left; margin: 0;}
@@ -121,26 +121,30 @@ html[xmlns] .slides {display: block;}
 	
 }
 @media screen and (max-width:667px) {
-	
-@media screen and (max-width: 600px) {
-	
-}
-@media screen and (max-width: 480px) {
-	section.slider {
-		padding-top: 0%;
-	}
-	.flexslider {
-		padding: 0px 0px;
-	}
-	.flex-control-nav {
-		left: 44.5%;
-	}
-}
-@media screen and (max-width: 414px){
-	
-@media screen and (max-width: 320px) {
-	section.slider {
-		padding-top: 0%;
-	}
-	
+
+    @media screen and (max-width: 600px) {
+
+    }
+    @media screen and (max-width: 480px) {
+        section.slider {
+            padding-top: 0%;
+        }
+
+        .flexslider {
+            padding: 0px 0px;
+        }
+
+        .flex-control-nav {
+            left: 44.5%;
+        }
+    }
+    @media screen and (max-width: 414px) {
+
+        @media screen and (max-width: 320px) {
+            section.slider {
+                padding-top: 0%;
+            }
+
+        }
+    }
 }
