@@ -1,10 +1,10 @@
 module.exports = {
-    MONGODB_URI: process.env.MONGODB_URI,
-    SESSION_SECRET: process.env.SESSION_SECRET,
-    BASE_URL: process.env.BASE_URL,
-    EMAIL_FROM: process.env.EMAIL_FROM,
-    EMAIL_CONTACT: process.env.EMAIL_CONTACT,
-    EMAIL_HOST: process.env.EMAIL_HOST,
-    EMAIL_PORT: process.env.EMAIL_PORT,
-    EMAIL_PASS: process.env.EMAIL_PASS
+    MONGODB_URI: 'mongodb+srv://ggmarket:mSKEihVjgK9Mmd98@cluster0-mglgq.mongodb.net/market',
+    SESSION_SECRET: 'some secret value',
+    BASE_URL: 'https://ggmarket.am',
+    EMAIL_FROM: 'ggmarket2@mail.ru',
+    EMAIL_CONTACT: 'ggmarket1@mail.ru',
+    EMAIL_HOST: 'smtp.mail.ru',
+    EMAIL_PORT: 465,
+    EMAIL_PASS: '115644gg'
 }
