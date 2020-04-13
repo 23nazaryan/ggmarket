@@ -1241,7 +1241,6 @@ button.submit.check_out {
 .w3_footer_grid ul.w3_footer_grid_list li a {
     color: #999;
     text-decoration: none;
-    text-transform: capitalize;
 }
 
 .w3_footer_grid ul.w3_footer_grid_list li a:hover {
@@ -5423,7 +5422,7 @@ input.checkbox:checked:after {
 }
 
 @media (max-width: 384px) {
-    .w3l_offers.sales, .w3ls_logo_products_left {
+    .w3l_offers.sales, .logo_products {
         display: none;
     }
 
@@ -5438,6 +5437,10 @@ input.checkbox:checked:after {
 
     .w3ls_logo_products_left1 {
         margin-top: 0 !important;
+    }
+
+    .footer .footer-info {
+        display: block !important;
     }
 
     .w3l_search input[type="submit"]:hover {
