@@ -141,7 +141,7 @@ router.get('/for-print/:id', async (req, res) => {
 
 router.get('/print/:id', auth, async (req, res) => {
     try {
-        const url = 'http://localhost:3000/admin/for-print/'+req.params.id
+        const url = keys.BASE_URL+'/admin/for-print/'+req.params.id
         const name = random.generate(10)+'.pdf'
         const file = path.join(__dirname, '../../../public/pdf/'+name)
 
