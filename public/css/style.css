@@ -5247,6 +5247,10 @@ input.checkbox:checked:after {
     #PPMiniCart .minicart-quantity {
         font-size: 11px;
     }
+
+    .flash-messages {
+        display: block !important;
+    }
 }
 
 @media (max-width: 375px) {

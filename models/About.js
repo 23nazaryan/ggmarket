@@ -48,6 +48,10 @@ const about = new Schema({
     instagram_link: {
         type: String
     },
+    delivery_price: {
+        type: Number,
+        default: 300
+    },
     createdAt: {type: Date, default: Date.now()},
     updatedAt: {type: Date, default: Date.now()}
 })

@@ -25,6 +25,18 @@
         </div>
     {{/if}}
 
+    <div class="flash-messages" style="display: none;">
+        {{#if error}}
+            <div class="alert alert-danger" role="alert" style="margin-top: 23px;">
+                <strong>Սխալ։</strong> {{error}}
+            </div>
+        {{else if success}}
+            <div class="alert alert-success" role="alert" style="margin-top: 23px;">
+                {{success}}
+            </div>
+        {{/if}}
+    </div>
+
     <div class="banner">
         {{> aside }}
 

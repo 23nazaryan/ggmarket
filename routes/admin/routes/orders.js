@@ -1,6 +1,7 @@
 const {Router} = require('express')
 const Order = require('../../../models/Order')
 const Product = require('../../../models/Product')
+const About = require('../../../models/About')
 const phantom = require('phantom')
 const dateformat = require('dateformat')
 const random = require('randomstring')
@@ -120,8 +121,9 @@ router.get('/delete/:id', auth, async (req, res) => {
 router.get('/for-print/:id', async (req, res) => {
     try {
         const order = await Order.findById(req.params.id)
-        const delivery = 300
-        const amount = parseInt(order.amount) + delivery
+        const about = await About.findOne()
+        const deliveryPrice = about.delivery_price
+        const amount = parseInt(order.amount) + deliveryPrice
         const date = dateformat(new Date(), "HH:MM dd-mm-yyyy")
 
         res.render('admin/orders/for-print', {
@@ -129,7 +131,7 @@ router.get('/for-print/:id', async (req, res) => {
             title: 'Պատվեր',
             order,
             amount,
-            delivery,
+            deliveryPrice,
             date
         })
     } catch (e) {
@@ -139,7 +141,7 @@ router.get('/for-print/:id', async (req, res) => {
 
 router.get('/print/:id', auth, async (req, res) => {
     try {
-        const url = keys.BASE_URL+'/admin/for-print/'+req.params.id
+        const url = 'http://localhost:3000/admin/for-print/'+req.params.id
         const name = random.generate(10)+'.pdf'
         const file = path.join(__dirname, '../../../public/pdf/'+name)
 
