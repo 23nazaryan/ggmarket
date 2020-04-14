@@ -120,12 +120,16 @@ router.get('/delete/:id', auth, async (req, res) => {
 router.get('/for-print/:id', async (req, res) => {
     try {
         const order = await Order.findById(req.params.id)
-        const date = dateformat(new Date(), "HH:MM dd-mm-yyyy")
+        const delivery = 300
+        const amount = parseInt(order.amount) + delivery
+        const date = dateformat(new Date(), "HH:MM dd-mm-yyyy", "Asia/Yerevan")
 
         res.render('admin/orders/for-print', {
             layout: false,
             title: 'Պատվեր',
             order,
+            amount,
+            delivery,
             date
         })
     } catch (e) {
