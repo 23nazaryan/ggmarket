@@ -5555,6 +5555,11 @@ input.checkbox:checked:after {
 }
 
 @media (max-width: 375px) {
+    .slider .flex-control-nav {
+        width: 200px !important;
+        left: 36% !important;
+    }
+
     .wthree_banner_btm_pos h3 span {
         padding-left: 5em;
     }
