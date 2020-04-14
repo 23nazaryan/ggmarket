@@ -4,13 +4,13 @@ const getProducts = async function(p, query)
 {
     const options = {
         page: parseInt(p, 10) || 1,
-        limit: 16
+        limit: 24
     }
     const products = await Product.paginate(query, options)
     const pagination = {
         page: products.page,
         pageCount: products.pages,
-        display: (products.total > 16) ? true : false
+        display: (products.total > 24) ? true : false
     }
 
     return {docs: products.docs, pagination}
