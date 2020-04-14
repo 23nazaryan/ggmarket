@@ -4,6 +4,10 @@
     --bg-url: '';
 }
 
+@font-face {
+    font-display: swap;
+}
+
 html, body {
     font-size: 100%;
     font-family: 'Ruda', sans-serif;
