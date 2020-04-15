@@ -66,6 +66,10 @@ span.glyphicon.glyphicon-shopping-cart.my-cart-icon.my-cart-icon-affix {
     text-align: center;
 }
 
+.snipcart-thumb p {
+    height: 50px !important;
+}
+
 .my-cart-icon-affix i {
     background: #056a35 !important;
 }
@@ -3238,10 +3242,6 @@ input.checkbox:checked:after {
     color: #fff;
     text-decoration: none;
     font-size: 1em;
-}
-
-.snipcart-thumb p {
-    height: 50px !important;
 }
 
 /*-- //login --*/
