@@ -3240,6 +3240,10 @@ input.checkbox:checked:after {
     font-size: 1em;
 }
 
+.snipcart-thumb p {
+    height: 50px !important;
+}
+
 /*-- //login --*/
 /*-----start-responsive-design------*/
 @media (max-width: 1680px) {
