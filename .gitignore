@@ -1,6 +1,5 @@
 .idea
 node_modules
-/keys/keys.dev.js
 /public/images/categories
 /public/images/products
 /public/images/about

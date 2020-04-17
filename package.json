@@ -1,11 +1,15 @@
 {
   "name": "ggmarket",
   "version": "1.0.0",
-  "description": "",
+  "description": "Online product shopping",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/23nazaryan/ggmarket.git"
   },
   "keywords": [],
   "author": "23Vahe",
