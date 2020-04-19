@@ -53,6 +53,7 @@ router.post('/', orderValidators, async (req, res) => {
         transporter.sendMail(orderMessage())
         await order.save()
         req.flash('success', 'Ձեր պատվերը ընդունված է, սպասեք մեր զանգին:')
+        req.flash('successOrder', true)
 
         res.redirect('/')
     } catch (e) {

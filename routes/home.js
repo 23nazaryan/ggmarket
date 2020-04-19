@@ -23,6 +23,7 @@ router.get('/', async (req, res) => {
             forSliders,
             error: req.flash('error'),
             success: req.flash('success'),
+            successOrder: req.flash('successOrder')
         })
     } catch (e) {
         console.log(e)

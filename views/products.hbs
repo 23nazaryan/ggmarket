@@ -42,7 +42,8 @@
                                                             <input type="hidden" name="typeId" value="-1" />
                                                         {{/if}}
                                                         <input type="hidden" name="href" value="/product/{{_id}}" />
-                                                        <input type="hidden" name="quantity" value="1" />
+                                                        <input type="hidden" name="quantity" {{#if sale_type}}value="1" {{else}}value="1000"{{/if}} />
+                                                        <input type="hidden" name="saleType" value="{{sale_type}}">
                                                         <input type="hidden" name="maxCount" value="{{count}}">
                                                         <input type="hidden" name="amount" value="{{#if is_sale}}{{new_price}}{{else}}{{price}}{{/if}}" />
                                                         <input type="hidden" name="basePrice" value="{{#if is_sale}}{{new_price}}{{else}}{{price}}{{/if}}">

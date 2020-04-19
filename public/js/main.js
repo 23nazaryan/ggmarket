@@ -1,21 +1,46 @@
-const countInput = document.querySelector('input#count')
+const $itemBlock = document.querySelector('.snipcart-item')
 
-if (countInput) {
-    countInput.addEventListener('change', event => {
-        const maxCount = parseInt(document.querySelector('input[name="maxCount"]').value)
-        const basePrice = parseInt(document.getElementById('base-price').value)
-        let count = parseInt(event.currentTarget.value)
+if ($itemBlock) {
+    ['change', 'keyup'].forEach(e => {
+        $itemBlock.addEventListener(e, event => {
+            if (event.target.classList.contains('count')) {
+                setTimeout(function () {
+                    const saleType = parseInt($itemBlock.querySelector('input[name="saleType"]').value)
+                    const maxCount = parseInt($itemBlock.querySelector('input[name="maxCount"]').value)
+                    const basePrice = parseInt($itemBlock.querySelector('input[name="basePrice"]').value)
+                    const amountInput = $itemBlock.querySelector('input[name="amount"]')
+                    const quantity = $itemBlock.querySelector('input[name="quantity"]')
+                    const priceInput = $itemBlock.querySelector('#price')
+                    const countInput = event.target
 
-        if (count === 0 || !count) {
-            count = 1
-        }
-        if (count > maxCount) {
-            count = maxCount
-        }
+                    let count = parseInt(countInput.value)
 
-        event.currentTarget.value = count
-        document.querySelector('input#price').value = count * basePrice
-        document.querySelector('input[name="quantity"]').value = countInput.value
+                    if (count < 0) {
+                        count = 1
+                    }
+
+                    if (count == 0 || isNaN(count)) {
+                        count = 1
+                    }
+
+                    if (count > maxCount) {
+                        count = maxCount
+                    }
+
+                    if (saleType == 0 && count < 100) {
+                        count = 100
+                    }
+
+                    quantity.value = countInput.value = count
+
+                    if (saleType) {
+                        priceInput.value = amountInput.value = (basePrice * count).toFixed(0)
+                    } else {
+                        priceInput.value = amountInput.value = ((count / 1000) * basePrice).toFixed(0)
+                    }
+                }, 1000)
+            }
+        })
     })
 }
 
@@ -36,22 +61,34 @@ if (quantitySelects) {
             const id = event.currentTarget.getAttribute('data-id')
             const products = document.querySelector('products div[data-id="'+id+'"]')
             const maxCount = parseInt(products.querySelector('input[class="maxCount"]').value)
+            const saleType = parseInt(products.querySelector('input[class="saleType"]').value)
             const basePrice = parseInt(products.querySelector('input[class="basePrice"]').value)
             const entryValue = document.querySelector('div[data-id="'+id+'"] div[class="entry value"]')
             const count = parseInt(entryValue.textContent)
             const td = document.querySelector('td[data-id="'+id+'"]')
+            let num = 1
+
+            if (saleType == 0) {
+                num = 100
+            }
 
             if (event.target.classList.contains('value-plus')) {
-                if ((count + 1) <= maxCount) {
-                    entryValue.textContent = count + 1
+                if ((count + num) <= maxCount) {
+                    entryValue.textContent = count + num
                 }
             } else if (event.target.classList.contains('value-minus')) {
-                if ((count -1) > 0) {
-                    entryValue.textContent = count - 1
+                if ((count - num) > 0) {
+                    entryValue.textContent = count - num
                 }
             }
 
-            td.textContent = entryValue.textContent * basePrice
+
+            if (saleType) {
+                td.textContent = (entryValue.textContent * basePrice).toFixed(0)
+            } else {
+                td.textContent = ((entryValue.textContent / 1000) * basePrice).toFixed(0)
+            }
+
             products.querySelector('input[class="count"]').value = entryValue.textContent
             products.querySelector('input[class="amount"]').value = td.textContent
 

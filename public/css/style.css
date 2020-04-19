@@ -4934,6 +4934,10 @@ input.checkbox:checked:after {
         bottom: -85px !important;
         right: 10px !important;
     }
+
+    #PPMiniCart .minicart-details-name {
+        width: 40%;
+    }
 }
 
 @media (max-width: 414px) {

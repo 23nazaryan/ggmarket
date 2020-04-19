@@ -39,9 +39,9 @@
                     {{#if product.sale_type}}
                         <label for="count">Հատ: </label>
                     {{else}}
-                        <label for="count">Կիլոգրամ։ </label>
+                        <label for="count">Գրամ։ </label>
                     {{/if}}
-                    <input id="count" class="count" type="number" value="1">
+                    <input id="count" class="count" type="number" {{#if product.sale_type}}value="1" {{else}}value="1000" step="100"{{/if}}>
                     =
                     <input id="price" class="price" type="number" disabled
                            value="{{#if product.is_sale}}{{product.new_price}}{{else}}{{product.price}}{{/if}}">
@@ -61,10 +61,11 @@
                                 <input type="hidden" name="typeId" value="0" />
                             {{/if}}
                             <input type="hidden" name="href" value="/product/{{product._id}}" />
-                            <input type="hidden" name="quantity" value="1" />
+                            <input type="hidden" name="quantity" {{#if product.sale_type}}value="1" {{else}}value="1000"{{/if}} />
+                            <input type="hidden" name="saleType" value="{{product.sale_type}}">
                             <input type="hidden" name="maxCount" value="{{product.count}}">
                             <input type="hidden" name="amount" value="{{#if product.is_sale}}{{product.new_price}}{{else}}{{product.price}}{{/if}}" />
-                            <input type="hidden" id="base-price" name="basePrice" value="{{#if product.is_sale}}{{product.new_price}}{{else}}{{product.price}}{{/if}}">
+                            <input type="hidden" name="basePrice" value="{{#if product.is_sale}}{{product.new_price}}{{else}}{{product.price}}{{/if}}">
                             <input type="hidden" name="discount_amount" value="" />
                             <input type="hidden" name="currency_code" value="AMD" />
                             <input type="hidden" name="return" value=" " />
@@ -73,7 +74,6 @@
                         </fieldset>
                     </form>
                 </div>
-                <input type="hidden" id="sale-type" value="{{product.sale_type}}">
             </div>
         </div>
         <div class="clearfix"></div>
@@ -116,12 +116,13 @@
                                                             <input type="hidden" name="id" value="{{_id}}" />
                                                             <input type="hidden" name="item_name" value="{{title}}" />
                                                             <input type="hidden" name="img" value="{{img}}" />
-                                                            {{#if product.types}}
+                                                            {{#if types}}
                                                                 <input type="hidden" name="type" value="նշված չէ" />
                                                                 <input type="hidden" name="typeId" value="-1" />
                                                             {{/if}}
                                                             <input type="hidden" name="href" value="/product/{{_id}}" />
-                                                            <input type="hidden" name="quantity" value="1" />
+                                                            <input type="hidden" name="quantity" {{#if sale_type}}value="1" {{else}}value="1000"{{/if}} />
+                                                            <input type="hidden" name="saleType" value="{{sale_type}}">
                                                             <input type="hidden" name="maxCount" value="{{count}}">
                                                             <input type="hidden" name="amount" value="{{#if is_sale}}{{new_price}}{{else}}{{price}}{{/if}}" />
                                                             <input type="hidden" name="basePrice" value="{{#if is_sale}}{{new_price}}{{else}}{{price}}{{/if}}">
