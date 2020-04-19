@@ -42,7 +42,9 @@
                         <label for="count">Գրամ։ </label>
                     {{/if}}
                     <input id="count" class="count" type="number" {{#if product.sale_type}}value="1" {{else}}value="1000" step="100"{{/if}}>
+                    <br class="small-display" style="display: none;">
                     =
+                    <br class="small-display" style="display: none;">
                     <input id="price" class="price" type="number" disabled
                            value="{{#if product.is_sale}}{{product.new_price}}{{else}}{{product.price}}{{/if}}">
                     <label for="price"> ։դրամ</label>
