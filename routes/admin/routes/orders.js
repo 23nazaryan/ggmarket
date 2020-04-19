@@ -3,7 +3,6 @@ const Order = require('../../../models/Order')
 const Product = require('../../../models/Product')
 const About = require('../../../models/About')
 const phantom = require('phantom')
-const dateformat = require('dateformat')
 const random = require('randomstring')
 const keys = require('../../../keys')
 const path = require('path')
@@ -124,7 +123,7 @@ router.get('/for-print/:id', async (req, res) => {
         const about = await About.findOne()
         const deliveryPrice = about.delivery_price
         const amount = parseInt(order.amount) + deliveryPrice
-        const date = dateformat(new Date(), "HH:MM dd-mm-yyyy")
+        const date = new Date()
 
         res.render('admin/orders/for-print', {
             layout: false,

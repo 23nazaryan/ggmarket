@@ -9,15 +9,7 @@ const admin = new Schema({
     password: {
         type: String,
         required: true
-    },
-    createdAt: {type: Date, default: Date.now()},
-    updatedAt: {type: Date, default: Date.now()}
+    }
 })
-
-admin.pre('save', function preSave(next){
-    const admin = this
-    admin.updatedAt = Date.now()
-    next()
-});
 
 module.exports = model('Admin', admin)

@@ -51,15 +51,7 @@ const about = new Schema({
     delivery_price: {
         type: Number,
         default: 300
-    },
-    createdAt: {type: Date, default: Date.now()},
-    updatedAt: {type: Date, default: Date.now()}
+    }
 })
-
-about.pre('save', function preSave(next){
-    const about = this
-    about.updatedAt = Date.now()
-    next()
-});
 
 module.exports = model('About', about)

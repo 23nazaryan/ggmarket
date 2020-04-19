@@ -1,7 +1,4 @@
 const {Schema, model} = require('mongoose')
-const dateFormat = require('dateformat')
-
-process.env.TZ = "Asia/Yerevan"
 
 const order = new Schema({
     tel: {
@@ -23,15 +20,13 @@ const order = new Schema({
     amount: {
         type: Number,
         required: true
-    },
-    createdAt: {type: String, default: dateFormat(new Date(), "HH:MM dd-mm-yyyy")},
-    updatedAt: {type: String, default: dateFormat(new Date(), "HH:MM dd-mm-yyyy")}
+    }
+},
+{
+    timestamps: {
+        createdAt: 'created_at',
+        updatedAt: 'updated_at'
+    }
 })
-
-order.pre('save', function preSave(next){
-    const order = this
-    order.updatedAt = dateFormat(new Date(), "HH:MM dd-mm-yyyy")
-    next()
-});
 
 module.exports = model('Order', order)

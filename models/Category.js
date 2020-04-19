@@ -27,15 +27,7 @@ const category = new Schema({
     parent_id: {
         type: Schema.Types.ObjectId,
         default: null
-    },
-    createdAt: {type: Date, default: Date.now()},
-    updatedAt: {type: Date, default: Date.now()}
+    }
 })
-
-category.pre('save', function preSave(next){
-    const category = this
-    category.updatedAt = Date.now()
-    next()
-});
 
 module.exports = model('Category', category)
