@@ -38,7 +38,7 @@ if ($itemBlock) {
                     } else {
                         priceInput.value = amountInput.value = ((count / 1000) * basePrice).toFixed(0)
                     }
-                }, 1000)
+                }, 2000)
             }
         })
     })

@@ -2014,7 +2014,7 @@
 
             BN: 'MiniCart_AddToCart_WPS_US',
 
-            KEYUP_TIMEOUT: 1000,
+            KEYUP_TIMEOUT: 2000,
 
             SHOWING_CLASS: 'minicart-showing',
 

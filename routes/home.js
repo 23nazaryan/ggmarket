@@ -1,5 +1,4 @@
 const {Router} = require('express')
-const Category = require('../models/Category')
 const About = require('../models/About')
 const categoryHelper = require('../utils/categoryHelper')
 const productHelper = require('../utils/productHelper')
