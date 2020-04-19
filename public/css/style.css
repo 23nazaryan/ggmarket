@@ -5120,6 +5120,7 @@ input.checkbox:checked:after {
     }
 
     #PPMiniCart {
+        top: 10% !important;
         left: 55% !important;
     }
 
