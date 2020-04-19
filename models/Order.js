@@ -1,6 +1,8 @@
 const {Schema, model} = require('mongoose')
 const dateFormat = require('dateformat')
 
+process.env.TZ = "Asia/Yerevan"
+
 const order = new Schema({
     tel: {
         type: String,
