@@ -5120,9 +5120,9 @@ input.checkbox:checked:after {
     }
 
     #PPMiniCart {
-        top: 10% !important;
+        top: 5% !important;
         left: 55% !important;
-        max-height: 300px !important;
+        max-height: 275px !important;
     }
 
     br.small-display {
