@@ -2014,7 +2014,7 @@
 
             BN: 'MiniCart_AddToCart_WPS_US',
 
-            KEYUP_TIMEOUT: 2000,
+            KEYUP_TIMEOUT: 500,
 
             SHOWING_CLASS: 'minicart-showing',
 
@@ -2880,6 +2880,7 @@
             // JavaScript
             events.add(document, ('ontouchstart' in window) ? 'touchstart' : 'click', viewevents.click, this);
             events.add(document, 'keyup', viewevents.keyup, this);
+            events.add(document, 'change', viewevents.change, this);
             events.add(document, 'readystatechange', viewevents.readystatechange, this);
             events.add(window, 'pageshow', viewevents.pageshow, this);
         }
@@ -3047,7 +3048,7 @@
             },
 
 
-            keyup: function (evt) {
+            change: function (evt) {
                 var that = this,
                     target = evt.target,
                     timer;
@@ -3077,7 +3078,7 @@
                                 cart.remove(idx);
                             }
                         }
-                    }, constants.KEYUP_TIMEOUT);
+                    }, 0);
                 }
             },
 

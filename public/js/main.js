@@ -1,46 +1,44 @@
 const $itemBlock = document.querySelector('.snipcart-item')
 
 if ($itemBlock) {
-    ['change', 'keyup'].forEach(e => {
-        $itemBlock.addEventListener(e, event => {
-            if (event.target.classList.contains('count')) {
-                setTimeout(function () {
-                    const saleType = parseInt($itemBlock.querySelector('input[name="saleType"]').value)
-                    const maxCount = parseInt($itemBlock.querySelector('input[name="maxCount"]').value)
-                    const basePrice = parseInt($itemBlock.querySelector('input[name="basePrice"]').value)
-                    const amountInput = $itemBlock.querySelector('input[name="amount"]')
-                    const quantity = $itemBlock.querySelector('input[name="quantity"]')
-                    const priceInput = $itemBlock.querySelector('#price')
-                    const countInput = event.target
+    $itemBlock.addEventListener('change', event => {
+        if (event.target.classList.contains('count')) {
+            setTimeout(function () {
+                const saleType = parseInt($itemBlock.querySelector('input[name="saleType"]').value)
+                const maxCount = parseInt($itemBlock.querySelector('input[name="maxCount"]').value)
+                const basePrice = parseInt($itemBlock.querySelector('input[name="basePrice"]').value)
+                const amountInput = $itemBlock.querySelector('input[name="amount"]')
+                const quantity = $itemBlock.querySelector('input[name="quantity"]')
+                const priceInput = $itemBlock.querySelector('#price')
+                const countInput = event.target
 
-                    let count = parseInt(countInput.value)
+                let count = parseInt(countInput.value)
 
-                    if (count < 0) {
-                        count = 1
-                    }
+                if (count < 0) {
+                    count = 1
+                }
 
-                    if (count == 0 || isNaN(count)) {
-                        count = 1
-                    }
+                if (count == 0 || isNaN(count)) {
+                    count = 1
+                }
 
-                    if (count > maxCount) {
-                        count = maxCount
-                    }
+                if (count > maxCount) {
+                    count = maxCount
+                }
 
-                    if (saleType == 0 && count < 100) {
-                        count = 100
-                    }
+                if (saleType == 0 && count < 100) {
+                    count = 100
+                }
 
-                    quantity.value = countInput.value = count
+                quantity.value = countInput.value = count
 
-                    if (saleType) {
-                        priceInput.value = amountInput.value = (basePrice * count).toFixed(0)
-                    } else {
-                        priceInput.value = amountInput.value = ((count / 1000) * basePrice).toFixed(0)
-                    }
-                }, 2000)
-            }
-        })
+                if (saleType) {
+                    priceInput.value = amountInput.value = (basePrice * count).toFixed(0)
+                } else {
+                    priceInput.value = amountInput.value = ((count / 1000) * basePrice).toFixed(0)
+                }
+            })
+        }
     })
 }
 
